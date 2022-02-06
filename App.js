@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
+import React, { useState } from "react";
+import Header from "./utils/header";
+import PlayerItem from "./utils/playerItem";
+import AddPlayer from "./utils/addPlayer";
 
 export default function App() {
+  const [players, setPlayers] = useState([]);
+
+  const handlePress = (key) => {
+    setPlayers((prevPlayers) => {
+      return prevPlayers.filter((item) => item.key != key);
+    });
+  };
+
+  const submitHandler = (text) => {
+    setPlayers((prevPlayers) => {
+      return [...prevPlayers, { player: text, key: Math.random().toString() }];
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Header />
+      <View style={styles.content}></View>
+      <AddPlayer submitHandler={submitHandler} />
+      <View style={styles.list}>
+        <FlatList
+          data={players}
+          renderItem={({ item }) => (
+            <PlayerItem item={item} handlePress={handlePress} />
+          )}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  container: {},
+  content: {
+    padding: 40,
+  },
+  list: {
+    marginTop: 20,
   },
 });
