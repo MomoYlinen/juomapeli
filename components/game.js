@@ -1,12 +1,11 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView, Button } from "react-native";
 
 const Game = (props) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.item}>
       <Button
-        onClick={props.handlerandomClick}
+        onPress={props.handlerandomClick}
         title="Seuraava kysymys"
       ></Button>
       <Text>{props.selected}</Text>
@@ -15,11 +14,14 @@ const Game = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
+  item: {
+    padding: 16,
+    marginTop: 16,
+    borderColor: "#bbb",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderRadius: 10,
+    textAlign: "center",
   },
 });
 export default Game;
