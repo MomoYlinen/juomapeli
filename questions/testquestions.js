@@ -11,6 +11,7 @@ const LisaaPelaaja = (pelaaja) => {
     pelaaja + " Anna kymmenen",
     pelaaja + " Juo yksi",
     pelaaja + " Juo kaksi",
+    pelaaja + "Joku vähän pidempi kysymys kokeillaan mitä tämä tuottaa",
   ];
 
   const random = Math.floor(Math.random() * 11);
