@@ -24,8 +24,8 @@ const Home = ({ navigation }) => {
     if (text.length > 3) {
       setPlayers((prevPlayers) => {
         return [
-          ...prevPlayers,
           { player: text, key: Math.random().toString() },
+          ...prevPlayers,
         ];
       });
     }
@@ -54,7 +54,12 @@ const Home = ({ navigation }) => {
       <View style={styles.button}>
         <TouchableOpacity title="New Game" onPress={pressHandler}>
           <Text
-            style={{ fontSize: 30, textAlign: "center", fontWeight: "bold" }}
+            style={{
+              fontSize: 30,
+              textAlign: "center",
+              fontWeight: "bold",
+              color: "rgb(97, 97, 97)",
+            }}
           >
             Aloita peli
           </Text>
@@ -79,7 +84,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "rgba(250, 222, 107,0.8)",
     justifyContent: "center",
   },
 });

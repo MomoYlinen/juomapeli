@@ -7,11 +7,14 @@ const screens = {
   Home: {
     screen: Home,
     navigationOptions: {
-      title: "New Game",
+      title: "Uusi peli",
     },
   },
   Game: {
     screen: Game,
+    navigationOptions: {
+      title: "Juomapeli",
+    },
   },
 };
 

@@ -21,7 +21,7 @@ const Game = (props) => {
               fontSize: 40,
               textAlign: "center",
               fontWeight: "bold",
-              color: "black",
+              color: "white",
             }}
           >
             {props.selected}
@@ -33,7 +33,15 @@ const Game = (props) => {
           onPress={props.handlerandomClick}
           title="Seuraava kysymys"
         >
-          <Text style={{ fontSize: 30, textAlign: "center" }}>
+          <Text
+            style={{
+              fontSize: 30,
+              textAlign: "center",
+              marginBottom: 20,
+              color: "rgb(97, 97, 97)",
+              fontWeight: "bold",
+            }}
+          >
             Seuraava kysymys
           </Text>
         </TouchableOpacity>
@@ -51,18 +59,19 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "rgba(250, 222, 107,0.8)",
     justifyContent: "center",
   },
   textWrapper: {
     flex: 1,
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 70,
-    marginTop: 50,
+    marginBottom: 90,
+    marginTop: 70,
     justifyContent: "center",
     borderRadius: 10,
-    opacity: 80,
+    borderWidth: 2,
+    backgroundColor: "rgba(250, 222, 107,0.8)",
   },
 });
 export default Game;

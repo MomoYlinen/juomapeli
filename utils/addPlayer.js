@@ -43,7 +43,7 @@ const AddPlayer = ({ submitHandler }) => {
           <Text
             style={{ fontSize: 20, textAlign: "center", fontWeight: "bold" }}
           >
-            Add Player
+            Lisää pelaaja
           </Text>
         </TouchableOpacity>
       </View>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: "#E38201",
+    backgroundColor: "rgba(250, 222, 10,1.0)",
     justifyContent: "center",
     borderTopRightRadius: 3,
     borderTopLeftRadius: 3,

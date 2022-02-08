@@ -11,7 +11,7 @@ const PlayerItem = ({ item, handlePress }) => {
         <Button
           onPress={() => handlePress(item.key)}
           title="X"
-          color={"black"}
+          color={"rgb(179, 0, 0)"}
         />
       </View>
     </View>
@@ -38,13 +38,15 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 4,
-    backgroundColor: "rgba(157, 163, 155,0.9)",
+    backgroundColor: "rgba(250, 222, 107,1.0)",
     marginTop: 7,
   },
   button: {
     flex: 1,
-    backgroundColor: "rgba(166, 28, 28,0.9)",
+    backgroundColor: "rgb(97, 97, 97)",
     justifyContent: "center",
     marginTop: 7,
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
   },
 });
