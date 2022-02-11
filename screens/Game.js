@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
 import React, { useState } from "react";
 import Game from "../components/game";
 import lisaaPelaaja from "../questions/testquestions";
-import shuffle from "../utils/shuffle";
 
 const GamePlay = ({ navigation, route }) => {
   const [selected, setSelected] = useState();
