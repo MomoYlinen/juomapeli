@@ -6,6 +6,8 @@ import {
   FlatList,
   TouchableOpacity,
   ImageBackground,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import React, { useState } from "react";
 import PlayerItem from "../utils/playerItem";
@@ -36,36 +38,42 @@ const Home = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground
-      source={require("../images/HomeScreen.jpg")}
-      style={styles.container}
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
     >
-      <View style={styles.addplayer}>
-        <AddPlayer submitHandler={submitHandler} />
-      </View>
-      <View style={styles.list}>
-        <FlatList
-          data={players}
-          renderItem={({ item }) => (
-            <PlayerItem item={item} handlePress={handlePress} />
-          )}
-        />
-      </View>
-      <View style={styles.button}>
-        <TouchableOpacity title="New Game" onPress={pressHandler}>
-          <Text
-            style={{
-              fontSize: 30,
-              textAlign: "center",
-              fontWeight: "bold",
-              color: "rgb(97, 97, 97)",
-            }}
-          >
-            Aloita peli
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </ImageBackground>
+      <ImageBackground
+        source={require("../images/HomeScreen.jpg")}
+        style={styles.container}
+      >
+        <View style={styles.addplayer}>
+          <AddPlayer submitHandler={submitHandler} />
+        </View>
+        <View style={styles.list}>
+          <FlatList
+            data={players}
+            renderItem={({ item }) => (
+              <PlayerItem item={item} handlePress={handlePress} />
+            )}
+          />
+        </View>
+        <View style={styles.button}>
+          <TouchableOpacity title="New Game" onPress={pressHandler}>
+            <Text
+              style={{
+                fontSize: 30,
+                textAlign: "center",
+                fontWeight: "bold",
+                color: "rgb(97, 97, 97)",
+              }}
+            >
+              Aloita peli
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </TouchableWithoutFeedback>
   );
 };
 
