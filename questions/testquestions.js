@@ -1,4 +1,4 @@
-const LisaaPelaaja = (pelaaja) => {
+const LisaaPelaaja = (pelaaja, pelaaja2, questionNumber) => {
   const questions = [
     pelaaja + " juo 5",
     pelaaja + " anna 3",
@@ -32,12 +32,12 @@ const LisaaPelaaja = (pelaaja) => {
     "Vanhin pelaaja 5",
     "Sinkut juo 2",
     pelaaja + " valitse itsellesi huora",
+    pelaaja + " ja " + pelaaja2 + " ottakaa peukkutappelu",
+    pelaaja + " ja " + pelaaja2 + " juo 5",
+    pelaaja + " ja " + pelaaja2 + " ottakaa kivi-sakset-paperi. Häviäjä juo 4",
   ];
 
-  const random = Math.floor(Math.random() * 31);
-  console.log(random);
-
-  return questions[random];
+  return questions[questionNumber];
 };
 
 export default LisaaPelaaja;

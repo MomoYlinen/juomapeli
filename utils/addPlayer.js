@@ -6,48 +6,64 @@ import {
   Button,
   View,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 
 const AddPlayer = ({ submitHandler }) => {
-  const [text, setText, textInput] = useState("");
+  const [text, setText] = useState("");
 
   const changeHandler = (val) => {
     setText(val);
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text
-          style={{
-            fontSize: 30,
-            textAlign: "center",
-            fontWeight: "bold",
-            marginTop: 10,
-            color: "white",
-          }}
-        >
-          {" "}
-          Kirjoita Pelaajan nimi
-        </Text>
-      </View>
-      <View style={styles.inputcotainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Kirjoita nimi"
-          onChangeText={changeHandler}
-        />
-      </View>
-      <View style={styles.button}>
-        <TouchableOpacity onPress={() => submitHandler(text)} color="white">
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <View style={styles.header}>
           <Text
-            style={{ fontSize: 20, textAlign: "center", fontWeight: "bold" }}
+            style={{
+              fontSize: 30,
+              textAlign: "center",
+              fontWeight: "bold",
+              marginTop: 10,
+              color: "white",
+            }}
           >
-            Lisää pelaaja
+            {" "}
+            Kirjoita Pelaajan nimi
           </Text>
-        </TouchableOpacity>
+        </View>
+        <View style={styles.inputcotainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Kirjoita nimi"
+            onChangeText={changeHandler}
+            value={text}
+          />
+        </View>
+        <View style={styles.button}>
+          <TouchableOpacity
+            onPress={() => {
+              {
+                submitHandler(text), setText("");
+              }
+            }}
+            color="white"
+          >
+            <Text
+              style={{ fontSize: 20, textAlign: "center", fontWeight: "bold" }}
+            >
+              Lisää pelaaja
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

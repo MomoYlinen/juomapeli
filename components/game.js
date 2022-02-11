@@ -42,7 +42,9 @@ const Game = (props) => {
               fontWeight: "bold",
             }}
           >
-            Seuraava kysymys
+            {props.counter < 1 || props.counter > 33
+              ? "Aloita Uusi Peli "
+              : "Seuraava Kysymys"}
           </Text>
         </TouchableOpacity>
       </View>
