@@ -8,10 +8,13 @@ import {
   ImageBackground,
   TouchableWithoutFeedback,
   Keyboard,
+  KeyboardAvoidingView,
 } from "react-native";
 import React, { useState } from "react";
 import PlayerItem from "../utils/playerItem";
 import AddPlayer from "../utils/addPlayer";
+import { LinearGradient } from "expo-linear-gradient";
+import Logo1 from "../SvgImages/Logo";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
@@ -38,42 +41,59 @@ const Home = ({ navigation }) => {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
-    >
-      <ImageBackground
-        source={require("../images/HomeScreen.jpg")}
-        style={styles.container}
+    <LinearGradient colors={["#FF5766", "#FFAD62"]} style={styles.background}>
+      <View style={styles.header}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Keyboard.dismiss();
+          }}
+        >
+          <Logo1 style={{ marginLeft: 160 }} />
+        </TouchableWithoutFeedback>
+      </View>
+      <KeyboardAvoidingView
+        style={styles.keyboardContainer}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <View style={styles.addplayer}>
-          <AddPlayer submitHandler={submitHandler} />
+        <View style={styles.headerText}>
+          <Text
+            style={{
+              fontSize: 30,
+              textAlign: "center",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Ketkä juovat tänään?
+          </Text>
         </View>
-        <View style={styles.list}>
+        <KeyboardAvoidingView style={styles.list}>
           <FlatList
             data={players}
             renderItem={({ item }) => (
               <PlayerItem item={item} handlePress={handlePress} />
             )}
           />
-        </View>
-        <View style={styles.button}>
-          <TouchableOpacity title="New Game" onPress={pressHandler}>
-            <Text
-              style={{
-                fontSize: 30,
-                textAlign: "center",
-                fontWeight: "bold",
-                color: "rgb(97, 97, 97)",
-              }}
-            >
-              Aloita peli
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
+        <KeyboardAvoidingView style={styles.addplayer}>
+          <AddPlayer submitHandler={submitHandler} />
+        </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+      <View style={styles.button}>
+        <TouchableOpacity title="New Game" onPress={pressHandler}>
+          <Text
+            style={{
+              fontSize: 20,
+              textAlign: "center",
+              fontWeight: "bold",
+              color: "rgb(97, 97, 97)",
+            }}
+          >
+            Aloita peli
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
   );
 };
 
@@ -81,19 +101,46 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  background: {
+    left: 0,
+    right: 0,
+    top: 0,
+    flex: 1,
+  },
+  header: {
+    flex: 3,
+    marginTop: 70,
+  },
+  headerText: {
+    flex: 1,
+    alignItems: "center",
+  },
+  keyboardContainer: {
+    flex: 8,
+    paddingBottom: 60,
+  },
   addplayer: {
-    flex: 4,
+    flex: 2,
     justifyContent: "center",
-    padding: 0,
+    marginBottom: 0,
   },
   list: {
-    flex: 4,
+    flex: 5,
     borderRadius: 10,
+    paddingBottom: 1,
+    marginTop: 30,
   },
   button: {
     flex: 1,
-    backgroundColor: "rgba(250, 222, 107,0.8)",
+    backgroundColor: "white",
     justifyContent: "center",
+    alignItems: "center",
+    height: 100,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 100,
+    marginVertical: 80,
+    marginHorizontal: 110,
   },
 });
 

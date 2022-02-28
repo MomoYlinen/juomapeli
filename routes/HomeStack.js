@@ -7,13 +7,13 @@ const screens = {
   Home: {
     screen: Home,
     navigationOptions: {
-      title: "Uusi peli",
+      title: "",
     },
   },
   Game: {
     screen: Game,
     navigationOptions: {
-      title: "Juomapeli",
+      title: "",
     },
   },
 };
@@ -21,8 +21,11 @@ const screens = {
 const HomeStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
     headerTintColor: "white",
-    headerStyle: {
-      backgroundColor: "black",
+    headerTransparent: true,
+    style: {
+      backgroundColor: "transparent",
+      borderTopWidth: 0,
+      position: "absolute",
     },
   },
 });

@@ -24,43 +24,36 @@ const AddPlayer = ({ submitHandler }) => {
       }}
     >
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text
-            style={{
-              fontSize: 30,
-              textAlign: "center",
-              fontWeight: "bold",
-              marginTop: 10,
-              color: "white",
-            }}
-          >
-            {" "}
-            Kirjoita Pelaajan nimi
-          </Text>
-        </View>
-        <View style={styles.inputcotainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Kirjoita nimi"
-            onChangeText={changeHandler}
-            value={text}
-          />
-        </View>
-        <View style={styles.button}>
-          <TouchableOpacity
-            onPress={() => {
-              {
-                submitHandler(text), setText("");
-              }
-            }}
-            color="white"
-          >
-            <Text
-              style={{ fontSize: 20, textAlign: "center", fontWeight: "bold" }}
+        <View style={styles.inputWrapper}>
+          <View style={styles.button}>
+            <TouchableOpacity
+              onPress={() => {
+                {
+                  submitHandler(text), setText("");
+                }
+              }}
+              color="white"
             >
-              Lisää pelaaja
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  color: "white",
+                }}
+              >
+                +
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.inputcotainer}>
+            <TextInput
+              style={styles.input}
+              placeholderTextColor="white"
+              placeholder="Kirjoita nimi"
+              onChangeText={changeHandler}
+              value={text}
+            />
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -72,37 +65,35 @@ const styles = StyleSheet.create({
     flex: 1,
     fontWeight: "bold",
   },
-  header: {
-    flex: 2,
-    justifyContent: "center",
-    marginTop: 20,
+  inputWrapper: {
+    flex: 1,
+    flexDirection: "row",
+    borderWidth: 1,
+    marginLeft: 60,
+    marginRight: 60,
+    marginVertical: 30,
+    borderRadius: 100,
+    borderColor: "white",
   },
   input: {
-    marginBottom: 0,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderBottomColor: "black",
-    backgroundColor: "white",
-    textAlign: "center",
+    borderColor: "white",
+    backgroundColor: "transparent",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 15,
+    color: "white",
+    marginTop: 5,
   },
   inputcotainer: {
     flex: 2,
     justifyContent: "center",
-    padding: 30,
+    color: "white",
   },
   button: {
     flex: 1,
-    backgroundColor: "rgba(250, 222, 10,1.0)",
+    backgroundColor: "transparent",
     justifyContent: "center",
-    borderTopRightRadius: 3,
-    borderTopLeftRadius: 3,
-    marginLeft: 50,
-    marginRight: 50,
-    marginBottom: 20,
+    alignItems: "center",
+    paddingRight: 15,
   },
 });
 export default AddPlayer;

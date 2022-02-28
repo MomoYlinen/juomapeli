@@ -8,11 +8,7 @@ const PlayerItem = ({ item, handlePress }) => {
         <Text style={styles.item}>{item.player}</Text>
       </View>
       <View style={styles.button}>
-        <Button
-          onPress={() => handlePress(item.key)}
-          title="X"
-          color={"rgb(179, 0, 0)"}
-        />
+        <Button onPress={() => handlePress(item.key)} title="X" color="white" />
       </View>
     </View>
   );
@@ -24,29 +20,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    marginLeft: 5,
-    marginRight: 5,
-    borderRadius: 20,
+    marginTop: 10,
+    marginHorizontal: 40,
   },
   item: {
-    padding: 16,
-    margin: 10,
+    paddingVertical: 12,
+    marginLeft: 60,
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 20,
     fontWeight: "bold",
     color: "white",
   },
   content: {
     flex: 4,
-    backgroundColor: "rgba(250, 222, 107,1.0)",
-    marginTop: 7,
+    backgroundColor: "rgba(255, 255, 255,0.2)",
+    borderBottomLeftRadius: 100,
+    borderTopLeftRadius: 100,
+    height: 50,
   },
   button: {
     flex: 1,
-    backgroundColor: "rgb(97, 97, 97)",
+    backgroundColor: "rgba(255, 255, 255,0.2)",
     justifyContent: "center",
-    marginTop: 7,
-    borderTopRightRadius: 15,
-    borderBottomRightRadius: 15,
+    borderBottomRightRadius: 100,
+    borderTopRightRadius: 100,
   },
 });
