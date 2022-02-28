@@ -14,6 +14,7 @@ const screens = {
     screen: Game,
     navigationOptions: {
       title: "",
+      headerBackTitleVisible: false,
     },
   },
 };
