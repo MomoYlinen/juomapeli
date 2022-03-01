@@ -15,9 +15,13 @@ import PlayerItem from "../utils/playerItem";
 import AddPlayer from "../utils/addPlayer";
 import { LinearGradient } from "expo-linear-gradient";
 import Logo1 from "../SvgImages/Logo";
+import TextAnimator from "../components/TextAnimator";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
+  const _onFinish = () => {
+    // Alert.alert('Animation', 'It is done!');
+  };
 
   const handlePress = (key) => {
     setPlayers((prevPlayers) => {
@@ -56,16 +60,17 @@ const Home = ({ navigation }) => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <View style={styles.headerText}>
-          <Text
-            style={{
+          <TextAnimator
+            content="Ketkä juovat tänään?"
+            textStyle={{
               fontSize: 30,
               textAlign: "center",
               color: "white",
               fontWeight: "bold",
             }}
-          >
-            Ketkä juovat tänään?
-          </Text>
+            duration={1000}
+            onFinish={_onFinish}
+          />
         </View>
         <KeyboardAvoidingView style={styles.list}>
           <FlatList
