@@ -8,7 +8,7 @@ const Game = (props) => {
     <LinearGradient colors={["#FF5766", "#FFAD62"]} style={styles.background}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Logo1 style={{ marginLeft: 160 }} />
+          <Logo1 style={{ marginTop: 55 }} />
         </View>
         <View style={styles.content}>
           <View style={styles.textWrapper}>
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    marginTop: 50,
+    justifyContent: "center",
+    alignItems: "center",
   },
   content: {
     flex: 7,

@@ -52,7 +52,7 @@ const Home = ({ navigation }) => {
             Keyboard.dismiss();
           }}
         >
-          <Logo1 style={{ marginLeft: 160 }} />
+          <Logo1 style={{ marginBottom: 30 }} />
         </TouchableWithoutFeedback>
       </View>
       <KeyboardAvoidingView
@@ -114,7 +114,8 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 3,
-    marginTop: 70,
+    justifyContent: "center",
+    alignItems: "center",
   },
   headerText: {
     flex: 1,
@@ -122,17 +123,17 @@ const styles = StyleSheet.create({
   },
   keyboardContainer: {
     flex: 8,
-    paddingBottom: 60,
+    paddingBottom: 70,
   },
   addplayer: {
-    flex: 2,
+    flex: 3,
     justifyContent: "center",
     marginBottom: 0,
   },
   list: {
     flex: 5,
     borderRadius: 10,
-    paddingBottom: 1,
+    marginBottom: 20,
     marginTop: 30,
   },
   button: {
