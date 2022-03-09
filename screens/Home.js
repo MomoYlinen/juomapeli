@@ -10,18 +10,59 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
+import {
+  Nunito_200ExtraLight,
+  Nunito_200ExtraLight_Italic,
+  Nunito_300Light,
+  Nunito_300Light_Italic,
+  Nunito_400Regular,
+  Nunito_400Regular_Italic,
+  Nunito_600SemiBold,
+  Nunito_600SemiBold_Italic,
+  Nunito_700Bold,
+  Nunito_700Bold_Italic,
+  Nunito_800ExtraBold,
+  Nunito_800ExtraBold_Italic,
+  Nunito_900Black,
+  Nunito_900Black_Italic,
+} from "@expo-google-fonts/nunito";
+import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import React, { useState } from "react";
 import PlayerItem from "../utils/playerItem";
 import AddPlayer from "../utils/addPlayer";
 import { LinearGradient } from "expo-linear-gradient";
 import Logo1 from "../SvgImages/Logo";
 import TextAnimator from "../components/TextAnimator";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
   const _onFinish = () => {
     // Alert.alert('Animation', 'It is done!');
   };
+
+  let [fontsLoaded] = useFonts({
+    Nunito_200ExtraLight,
+    Nunito_200ExtraLight_Italic,
+    Nunito_300Light,
+    Nunito_300Light_Italic,
+    Nunito_400Regular,
+    Nunito_400Regular_Italic,
+    Nunito_600SemiBold,
+    Nunito_600SemiBold_Italic,
+    Nunito_700Bold,
+    Nunito_700Bold_Italic,
+    Nunito_800ExtraBold,
+    Nunito_800ExtraBold_Italic,
+    Nunito_900Black,
+    Nunito_900Black_Italic,
+    Lobster_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   const handlePress = (key) => {
     setPlayers((prevPlayers) => {
@@ -33,8 +74,8 @@ const Home = ({ navigation }) => {
     if (text.length > 3) {
       setPlayers((prevPlayers) => {
         return [
-          { player: text, key: Math.random().toString() },
           ...prevPlayers,
+          { player: text, key: Math.random().toString() },
         ];
       });
     }
@@ -45,45 +86,51 @@ const Home = ({ navigation }) => {
   };
 
   return (
-    <LinearGradient colors={["#FF5766", "#FFAD62"]} style={styles.background}>
+    <View style={styles.background}>
       <View style={styles.header}>
         <TouchableWithoutFeedback
           onPress={() => {
             Keyboard.dismiss();
           }}
         >
-          <Logo1 style={{ marginBottom: 30 }} />
+          <Logo1 style={{ marginBottom: 64 }} />
         </TouchableWithoutFeedback>
       </View>
-      <KeyboardAvoidingView
-        style={styles.keyboardContainer}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
+      <View style={styles.keyboardContainer}>
         <View style={styles.headerText}>
           <TextAnimator
             content="Ketkä juovat tänään?"
             textStyle={{
               fontSize: 30,
               textAlign: "center",
-              color: "white",
+              color: "#6534B9",
               fontWeight: "bold",
+              fontFamily: "Lobster_400Regular",
             }}
             duration={1000}
             onFinish={_onFinish}
           />
         </View>
-        <KeyboardAvoidingView style={styles.list}>
+        <View style={styles.addplayerWrapper}>
           <FlatList
+            columnWrapperStyle={{ justifyContent: "center" }}
+            contentContainerStyle={{ marginHorizontal: 16 }}
+            style={styles.list}
             data={players}
+            keyExtractor={(item) => item.key}
+            numColumns={3}
+            horizontal={false}
             renderItem={({ item }) => (
-              <PlayerItem item={item} handlePress={handlePress} />
+              <PlayerItem
+                item={item}
+                handlePress={handlePress}
+                style={styles.addplayer}
+              />
             )}
           />
-        </KeyboardAvoidingView>
-        <KeyboardAvoidingView style={styles.addplayer}>
           <AddPlayer submitHandler={submitHandler} />
-        </KeyboardAvoidingView>
-      </KeyboardAvoidingView>
+        </View>
+      </View>
       <View style={styles.button}>
         <TouchableOpacity title="New Game" onPress={pressHandler}>
           <Text
@@ -91,14 +138,15 @@ const Home = ({ navigation }) => {
               fontSize: 20,
               textAlign: "center",
               fontWeight: "bold",
-              color: "rgb(97, 97, 97)",
+              color: "white",
+              fontFamily: "Nunito_600SemiBold",
             }}
           >
-            Aloita peli
+            Valmis
           </Text>
         </TouchableOpacity>
       </View>
-    </LinearGradient>
+    </View>
   );
 };
 
@@ -107,13 +155,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    left: 0,
-    right: 0,
-    top: 0,
     flex: 1,
+    backgroundColor: "#FCFCFC",
   },
   header: {
-    flex: 3,
+    flex: 5,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -122,31 +168,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   keyboardContainer: {
-    flex: 8,
+    flex: 7,
     paddingBottom: 70,
   },
+  addplayerWrapper: {
+    flex: 9,
+  },
   addplayer: {
-    flex: 3,
     justifyContent: "center",
-    marginBottom: 0,
+    minHeight: "60%",
   },
   list: {
-    flex: 5,
-    borderRadius: 10,
-    marginBottom: 20,
-    marginTop: 30,
+    marginBottom: 0,
+    marginTop: 24,
+    maxHeight: "40%",
   },
   button: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#6534B9",
     justifyContent: "center",
     alignItems: "center",
-    height: 100,
-    borderWidth: 1,
-    borderColor: "black",
     borderRadius: 100,
-    marginVertical: 80,
-    marginHorizontal: 110,
+    marginVertical: 68,
+    marginHorizontal: 100,
+    shadowColor: "#171717",
+    shadowOffset: { width: 1, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+    paddingVertical: 12,
   },
 });
 
