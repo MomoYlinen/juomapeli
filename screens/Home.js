@@ -131,8 +131,8 @@ const Home = ({ navigation }) => {
           <AddPlayer submitHandler={submitHandler} />
         </View>
       </View>
-      <View style={styles.button}>
-        <TouchableOpacity title="New Game" onPress={pressHandler}>
+      <TouchableOpacity style={styles.button} onPress={pressHandler}>
+        <View>
           <Text
             style={{
               fontSize: 20,
@@ -144,8 +144,8 @@ const Home = ({ navigation }) => {
           >
             Valmis
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     marginTop: 24,
     maxHeight: "40%",
+    marginHorizontal: 8,
   },
   button: {
     flex: 1,

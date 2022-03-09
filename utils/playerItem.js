@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1 / 3,
 
-    marginTop: 10,
+    marginTop: 8,
     marginHorizontal: 8,
   },
   item: {
@@ -82,5 +82,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     flexDirection: "column",
+    marginHorizontal: 0,
   },
 });
