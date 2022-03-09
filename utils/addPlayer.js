@@ -27,6 +27,7 @@ import {
 } from "@expo-google-fonts/nunito";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import { Feather } from "@expo/vector-icons";
 
 const AddPlayer = ({ submitHandler }) => {
   const [text, setText] = useState("");
@@ -105,15 +106,7 @@ const AddPlayer = ({ submitHandler }) => {
           style={{ flex: 1 }}
         >
           <View style={styles.button}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "white",
-              }}
-            >
-              +
-            </Text>
+            <Feather name="plus-circle" size={45} color="#6534B9" />
           </View>
         </TouchableOpacity>
       </View>
@@ -163,7 +156,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: "#6534B9",
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 100,
