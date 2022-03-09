@@ -88,7 +88,7 @@ const AddPlayer = ({ submitHandler }) => {
             onChangeText={changeHandler}
             value={text}
             blurOnSubmit={true}
-            maxLength={16}
+            maxLength={14}
             enablesReturnKeyAutomatically={true}
             keyboardAppearance="light"
             keyboardType="ascii-capable"
@@ -96,15 +96,15 @@ const AddPlayer = ({ submitHandler }) => {
             onFocus={() => setIsFocused(true)}
           />
         </View>
-        <View style={styles.button}>
-          <TouchableOpacity
-            onPress={() => {
-              {
-                submitHandler(text), setText("");
-              }
-            }}
-            color="white"
-          >
+        <TouchableOpacity
+          onPress={() => {
+            {
+              submitHandler(text), setText("");
+            }
+          }}
+          style={{ flex: 1 }}
+        >
+          <View style={styles.button}>
             <Text
               style={{
                 fontSize: 16,
@@ -114,8 +114,8 @@ const AddPlayer = ({ submitHandler }) => {
             >
               +
             </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
