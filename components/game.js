@@ -1,9 +1,48 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Logo1 from "../SvgImages/Logo";
+import {
+  Nunito_200ExtraLight,
+  Nunito_200ExtraLight_Italic,
+  Nunito_300Light,
+  Nunito_300Light_Italic,
+  Nunito_400Regular,
+  Nunito_400Regular_Italic,
+  Nunito_600SemiBold,
+  Nunito_600SemiBold_Italic,
+  Nunito_700Bold,
+  Nunito_700Bold_Italic,
+  Nunito_800ExtraBold,
+  Nunito_800ExtraBold_Italic,
+  Nunito_900Black,
+  Nunito_900Black_Italic,
+} from "@expo-google-fonts/nunito";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 const Game = (props) => {
+  let [fontsLoaded] = useFonts({
+    Nunito_200ExtraLight,
+    Nunito_200ExtraLight_Italic,
+    Nunito_300Light,
+    Nunito_300Light_Italic,
+    Nunito_400Regular,
+    Nunito_400Regular_Italic,
+    Nunito_600SemiBold,
+    Nunito_600SemiBold_Italic,
+    Nunito_700Bold,
+    Nunito_700Bold_Italic,
+    Nunito_800ExtraBold,
+    Nunito_800ExtraBold_Italic,
+    Nunito_900Black,
+    Nunito_900Black_Italic,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <LinearGradient colors={["#FF5766", "#FFAD62"]} style={styles.background}>
       <View style={styles.container}>
@@ -14,10 +53,11 @@ const Game = (props) => {
           <View style={styles.textWrapper}>
             <Text
               style={{
-                fontSize: 40,
+                fontSize: 50,
                 textAlign: "center",
                 fontWeight: "bold",
                 color: "white",
+                fontFamily: "Nunito_700Bold",
               }}
             >
               {props.selected}
@@ -36,6 +76,7 @@ const Game = (props) => {
                 marginBottom: 0,
                 color: "black",
                 fontWeight: "bold",
+                fontFamily: "Nunito_400Regular",
               }}
             >
               {props.counter < 1 || props.counter > 33
@@ -81,11 +122,10 @@ const styles = StyleSheet.create({
   },
   textWrapper: {
     flex: 1,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     marginBottom: 0,
     marginTop: 50,
     justifyContent: "center",
-    borderRadius: 10,
   },
 });
 export default Game;

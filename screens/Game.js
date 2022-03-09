@@ -10,34 +10,10 @@ const GamePlay = ({ navigation, route }) => {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
   ]);
-  const [firstRound, setFirstRound] = useState(false);
 
   const players = navigation.getParam("gamers");
 
-  if (counter === 0) {
-    let randomize = questionNumber
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
-    setQuestionNumber(randomize);
-
-    let randomPlayerlist = players
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
-
-    const randomPlayerOne = randomPlayerlist[0].player;
-    const randomPlayerTwo = randomPlayerlist[1].player;
-    console.log(randomPlayerOne, randomPlayerTwo);
-    const kysymys = lisaaPelaaja(
-      randomPlayerOne,
-      randomPlayerTwo,
-      questionNumber[counter]
-    );
-    setSelected(kysymys);
-    setCounter(counter + 1);
-  }
-
+  console.log("Kysyysnumero: ", questionNumber[counter], " Laskuri: ", counter);
   const handlerandomClick = () => {
     if (players.length <= 2) {
       setSelected("Lisää pelaajia");
@@ -50,11 +26,16 @@ const GamePlay = ({ navigation, route }) => {
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
       setQuestionNumber(randomize);
+
+      let randomPlayerlist = players
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
     }
 
     if (counter > 33) {
       setSelected("Peli on päättynyt");
-      setCounter(1);
+      setCounter(0);
       return;
     }
     console.log(
@@ -90,7 +71,5 @@ const GamePlay = ({ navigation, route }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default GamePlay;
