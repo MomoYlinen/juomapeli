@@ -35,6 +35,7 @@ import Logo1 from "../SvgImages/Logo";
 import TextAnimator from "../components/TextAnimator";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import { Feather } from "@expo/vector-icons";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
