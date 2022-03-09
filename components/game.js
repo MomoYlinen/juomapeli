@@ -44,10 +44,10 @@ const Game = (props) => {
   }
 
   return (
-    <LinearGradient colors={["#FF5766", "#FFAD62"]} style={styles.background}>
+    <View style={styles.container}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Logo1 style={{ marginTop: 55 }} />
+          <Logo1 style={{ marginTop: 48 }} />
         </View>
         <View style={styles.content}>
           <View style={styles.textWrapper}>
@@ -56,7 +56,7 @@ const Game = (props) => {
                 fontSize: 50,
                 textAlign: "center",
                 fontWeight: "bold",
-                color: "white",
+                color: "#6534B9",
                 fontFamily: "Nunito_700Bold",
               }}
             >
@@ -74,7 +74,7 @@ const Game = (props) => {
                 fontSize: 20,
                 textAlign: "center",
                 marginBottom: 0,
-                color: "black",
+                color: "#FCFCFC",
                 fontWeight: "bold",
                 fontFamily: "Nunito_400Regular",
               }}
@@ -86,19 +86,14 @@ const Game = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-    </LinearGradient>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  background: {
-    left: 0,
-    right: 0,
-    top: 0,
-    flex: 1,
+    backgroundColor: "#FCFCFC",
   },
   header: {
     flex: 1,
@@ -110,7 +105,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#6534B9",
     justifyContent: "center",
     alignItems: "center",
     height: 100,

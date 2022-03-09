@@ -57,8 +57,6 @@ const AddPlayer = ({ submitHandler }) => {
     setText(val);
   };
 
-  console.log(isFocused);
-
   return (
     <View style={styles.container}>
       <View style={styles.inputWrapper}>

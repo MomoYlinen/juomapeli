@@ -31,7 +31,7 @@ export default class TextAnimator extends React.Component {
       this.props.duration / 5,
       toValue === 0 ? animations.reverse() : animations
     ).start(() => {
-      setTimeout(() => this.animated(toValue === 0 ? 1 : 0), 3000);
+      setTimeout(() => this.animated(toValue === 0 ? 1 : 1), 3000);
       if (this.props.onFinish) {
         this.props.onFinish();
       }
