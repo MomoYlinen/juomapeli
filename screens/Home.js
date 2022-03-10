@@ -103,7 +103,7 @@ const Home = ({ navigation }) => {
           <LottieView
             source={require("../assets/lottie/HuikkaBottleAnim_Purple")}
             autoPlay={true}
-            loop={false}
+            loop={true}
           />
         </View>
       </View>
