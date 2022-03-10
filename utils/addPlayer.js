@@ -59,58 +59,64 @@ const AddPlayer = ({ submitHandler }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputWrapper}>
-        <View
-          style={{
-            borderColor: isFocused ? "#6534B9" : "white",
-            borderWidth: isFocused ? 1 : 1,
-            flex: 5,
-            justifyContent: "center",
-            color: "white",
-            borderRadius: 100,
-            marginHorizontal: 0,
-            alignItems: "center",
-            marginLeft: 16,
-            marginRight: 8,
-            shadowColor: isFocused ? "grey" : "#00000033",
-            shadowOffset: isFocused
-              ? { width: 2, height: 1 }
-              : { width: 3, height: 2 },
-            shadowOpacity: 0.9,
-            shadowRadius: 1,
-            backgroundColor: "white",
-          }}
-        >
-          <TextInput
-            style={styles.input}
-            placeholderTextColor="grey"
-            placeholder="Lisää pelaaja..."
-            onChangeText={changeHandler}
-            value={text}
-            blurOnSubmit={true}
-            maxLength={14}
-            enablesReturnKeyAutomatically={true}
-            keyboardAppearance="light"
-            keyboardType="ascii-capable"
-            onBlur={() => setIsFocused(false)}
-            onFocus={() => setIsFocused(true)}
-          />
-        </View>
-        <TouchableOpacity
-          onPress={() => {
-            {
-              submitHandler(text), setText("");
-            }
-          }}
-          style={{ flex: 1 }}
-        >
-          <View style={styles.button}>
-            <Feather name="plus-circle" size={45} color="#6534B9" />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <View style={styles.inputWrapper}>
+          <View
+            style={{
+              borderColor: isFocused ? "#6534B9" : "white",
+              borderWidth: isFocused ? 1 : 1,
+              flex: 5,
+              justifyContent: "center",
+              color: "white",
+              borderRadius: 100,
+              marginHorizontal: 0,
+              alignItems: "center",
+              marginLeft: 16,
+              marginRight: 8,
+              shadowColor: isFocused ? "grey" : "#00000033",
+              shadowOffset: isFocused
+                ? { width: 2, height: 1 }
+                : { width: 3, height: 2 },
+              shadowOpacity: 0.9,
+              shadowRadius: 1,
+              backgroundColor: "white",
+            }}
+          >
+            <TextInput
+              style={styles.input}
+              placeholderTextColor="grey"
+              placeholder="Lisää pelaaja..."
+              onChangeText={changeHandler}
+              value={text}
+              blurOnSubmit={true}
+              maxLength={14}
+              enablesReturnKeyAutomatically={true}
+              keyboardAppearance="light"
+              keyboardType="ascii-capable"
+              onBlur={() => setIsFocused(false)}
+              onFocus={() => setIsFocused(true)}
+            />
           </View>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              {
+                submitHandler(text), setText("");
+              }
+            }}
+            style={{ flex: 1 }}
+          >
+            <View style={styles.button}>
+              <Feather name="plus-circle" size={45} color="#6534B9" />
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -138,6 +144,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
     flex: 1,
     fontFamily: "Nunito_600SemiBold_Italic",
+    width: "100%",
+    textAlign: "center",
   },
   inputcotainer: {
     flex: 5,

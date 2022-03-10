@@ -94,7 +94,7 @@ const Home = ({ navigation }) => {
             Keyboard.dismiss();
           }}
         >
-          <Logo1 style={{ marginBottom: 64 }} />
+          <Logo1 style={{ marginBottom: 80 }} />
         </TouchableWithoutFeedback>
       </View>
       <View style={styles.keyboardContainer}>
@@ -102,20 +102,33 @@ const Home = ({ navigation }) => {
           <TextAnimator
             content="Ketkä juovat tänään?"
             textStyle={{
-              fontSize: 30,
+              fontSize: 24,
               textAlign: "center",
               color: "#6534B9",
               fontWeight: "bold",
-              fontFamily: "Lobster_400Regular",
+              fontFamily: "Nunito_700Bold",
             }}
             duration={1000}
             onFinish={_onFinish}
           />
+          <Text
+            style={{
+              fontSize: 16,
+              textAlign: "center",
+              color: "#6534B9",
+              fontWeight: "bold",
+              fontFamily: "Nunito_300Light",
+            }}
+          >
+            {players.length >= 3
+              ? "Hyvä! olet valmis aloittamaan"
+              : "Tarvisemme vähintään kolme pelaajaa"}
+          </Text>
         </View>
         <View style={styles.addplayerWrapper}>
           <FlatList
             columnWrapperStyle={{ justifyContent: "center" }}
-            contentContainerStyle={{ marginHorizontal: 16 }}
+            contentContainerStyle={{ marginHorizontal: 64 }}
             style={styles.list}
             data={players}
             keyExtractor={(item) => item.key}
@@ -132,7 +145,23 @@ const Home = ({ navigation }) => {
           <AddPlayer submitHandler={submitHandler} />
         </View>
       </View>
-      <TouchableOpacity style={styles.button} onPress={pressHandler}>
+      <TouchableOpacity
+        style={{
+          flex: 1,
+          backgroundColor: players.length >= 3 ? "#6534B9" : "#FCFCFC",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 100,
+          marginVertical: 68,
+          marginHorizontal: 100,
+          shadowColor: players.length >= 3 ? "#171717" : "#FCFCFC",
+          shadowOffset: players.length >= 3 ? { width: 1, height: 5 } : null,
+          shadowOpacity: players.length >= 3 ? 0.4 : null,
+          shadowRadius: players.length >= 3 ? 2 : null,
+          paddingVertical: 12,
+        }}
+        onPress={players.length >= 3 ? pressHandler : null}
+      >
         <View>
           <Text
             style={{
@@ -170,7 +199,7 @@ const styles = StyleSheet.create({
   },
   keyboardContainer: {
     flex: 7,
-    paddingBottom: 70,
+    paddingBottom: 30,
   },
   addplayerWrapper: {
     flex: 9,

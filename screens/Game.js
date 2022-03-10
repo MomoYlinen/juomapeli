@@ -27,7 +27,6 @@ const GamePlay = ({ navigation, route }) => {
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
       setQuestionNumber(randomize);
-      console.log("randomize", randomize);
 
       let randomPlayerlist = players
         .map((value) => ({ value, sort: Math.random() }))
@@ -40,12 +39,6 @@ const GamePlay = ({ navigation, route }) => {
       setCounter(0);
       return;
     }
-    console.log(
-      "Kysymysnumero: ",
-      questionNumber[counter],
-      " Laskuri: ",
-      counter
-    );
 
     let randomPlayerlist = players
       .map((value) => ({ value, sort: Math.random() }))
@@ -62,7 +55,6 @@ const GamePlay = ({ navigation, route }) => {
         randomPlayerTwo,
         questionNumber[randomInt]
       );
-      console.log("Täällä", randomInt, kysymys);
 
       setSelected(kysymys);
       setCounter(counter + 1);
@@ -79,12 +71,6 @@ const GamePlay = ({ navigation, route }) => {
 
   if (startNewGame === true) {
     setStartNewGame(false);
-    let randomize = questionNumber
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
-    setQuestionNumber(randomize);
-    console.log("randomize", randomize);
     handlerandomClick();
   }
 
