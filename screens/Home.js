@@ -10,6 +10,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
+import LottieView from "lottie-react-native";
 import {
   Nunito_200ExtraLight,
   Nunito_200ExtraLight_Italic,
@@ -89,13 +90,22 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.background}>
       <View style={styles.header}>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            Keyboard.dismiss();
-          }}
-        >
-          <Logo1 style={{ marginBottom: 80 }} />
-        </TouchableWithoutFeedback>
+        <View style={styles.logo}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              Keyboard.dismiss();
+            }}
+          >
+            <Logo1 style={{ marginTop: 16 }} />
+          </TouchableWithoutFeedback>
+        </View>
+        <View style={styles.lottie}>
+          <LottieView
+            source={require("../assets/lottie/HuikkaBottleAnim_Purple")}
+            autoPlay={true}
+            loop={false}
+          />
+        </View>
       </View>
       <View style={styles.keyboardContainer}>
         <View style={styles.headerText}>
@@ -190,6 +200,14 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 5,
+  },
+  logo: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  lottie: {
+    flex: 2,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -198,8 +216,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   keyboardContainer: {
-    flex: 7,
-    paddingBottom: 30,
+    flex: 6,
+    paddingBottom: 10,
   },
   addplayerWrapper: {
     flex: 9,
