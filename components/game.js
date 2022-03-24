@@ -79,7 +79,7 @@ const Game = (props) => {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <AntDesign name="rightcircleo" size={80} color="white" />
+            <AntDesign name="right" size={80} color="white" />
           </View>
         </TouchableOpacity>
       </View>
