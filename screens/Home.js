@@ -24,6 +24,7 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import ReadyButton from "./HomeComponents/ReadyButton";
 import HomeHeader from "./HomeComponents/HomeHeader";
+import Headliner from "./HomeComponents/Headliner";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
@@ -78,33 +79,7 @@ const Home = ({ navigation }) => {
     <View style={styles.background}>
       <HomeHeader style={{ flex: 5 }} />
       <View style={styles.keyboardContainer}>
-        <View style={styles.headerText}>
-          <TextAnimator
-            content="Ketkä juovat tänään?"
-            textStyle={{
-              fontSize: 24,
-              textAlign: "center",
-              color: "#6534B9",
-              fontWeight: "bold",
-              fontFamily: "Nunito_700Bold",
-            }}
-            duration={1000}
-            onFinish={_onFinish}
-          />
-          <Text
-            style={{
-              fontSize: 16,
-              textAlign: "center",
-              color: "#6534B9",
-              fontWeight: "bold",
-              fontFamily: "Nunito_300Light",
-            }}
-          >
-            {players.length >= 3
-              ? "Hyvä! olet valmis aloittamaan"
-              : "Tarvisemme vähintään kolme pelaajaa"}
-          </Text>
-        </View>
+        <Headliner style={{ flex: 1 }} playersLength={players.length} />
         <View style={styles.addplayerWrapper}>
           <FlatList
             columnWrapperStyle={{ justifyContent: "center" }}
