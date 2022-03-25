@@ -32,6 +32,7 @@ import Logo1 from "../SvgImages/Logo";
 import TextAnimator from "../components/TextAnimator";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import ReadyButton from "./HomeComponents/ReadyButton";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
@@ -150,37 +151,11 @@ const Home = ({ navigation }) => {
           <AddPlayer submitHandler={submitHandler} />
         </View>
       </View>
-      <TouchableOpacity
-        style={{
-          flex: 1,
-          backgroundColor: players.length >= 3 ? "#6534B9" : "#FCFCFC",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: 100,
-          marginVertical: 68,
-          marginHorizontal: 100,
-          shadowColor: players.length >= 3 ? "#171717" : "#FCFCFC",
-          shadowOffset: players.length >= 3 ? { width: 1, height: 5 } : null,
-          shadowOpacity: players.length >= 3 ? 0.4 : null,
-          shadowRadius: players.length >= 3 ? 2 : null,
-          paddingVertical: 12,
-        }}
-        onPress={players.length >= 3 ? pressHandler : null}
-      >
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              textAlign: "center",
-              fontWeight: "bold",
-              color: "white",
-              fontFamily: "Nunito_600SemiBold",
-            }}
-          >
-            Valmis
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <ReadyButton
+        style={{ flex: 1 }}
+        pressHandler={pressHandler}
+        playersLength={players.length}
+      />
     </View>
   );
 };
