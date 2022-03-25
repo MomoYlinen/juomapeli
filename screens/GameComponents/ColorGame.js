@@ -67,7 +67,7 @@ const ColorGame = (props) => {
       <View style={styles.textWrapper}>
         <Text
           style={{
-            fontSize: 24,
+            fontSize: 30,
             textAlign: "center",
             fontWeight: "bold",
             color: "#6534B9",
@@ -78,11 +78,12 @@ const ColorGame = (props) => {
         </Text>
         <Text
           style={{
-            fontSize: 30,
+            fontSize: 36,
             textAlign: "center",
             fontWeight: "bold",
             color: "#6534B9",
             fontFamily: "Nunito_700Bold",
+            marginTop: 16,
           }}
         >
           Valitse väri
@@ -137,7 +138,7 @@ const ColorGame = (props) => {
           style={{
             flex: 1,
             borderWidth: 2,
-            borderColor: "#eb623f",
+            borderColor: "#e62727",
             marginLeft: 6,
             justifyContent: "center",
           }}
@@ -164,7 +165,7 @@ const ColorGame = (props) => {
               }}
               style={{
                 flex: 1,
-                backgroundColor: "#eb623f",
+                backgroundColor: "#e62727",
                 justifyContent: "center",
                 alignItems: "center",
               }}
@@ -188,12 +189,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#FCFCFC",
   },
   textWrapper: {
-    flex: 1,
-    marginHorizontal: 20,
-    marginBottom: 0,
+    flex: 2,
+    marginHorizontal: 16,
+    marginBottom: 8,
     marginTop: 50,
     justifyContent: "center",
-    paddingVertical: 64,
   },
   buttonWrapper: {
     flex: 1,
@@ -201,6 +201,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 16,
+    marginBottom: 32,
   },
 });
 export default ColorGame;
