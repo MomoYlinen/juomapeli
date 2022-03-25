@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
 import React, { useState } from "react";
-import Game from "../components/game";
-import lisaaPelaaja from "../questions/testquestions";
+import BaseGame from "./GameComponents/BaseGame";
+import addPlayertoQuestion from "../questions/testquestions";
 import getRandomInt from "../utils/getRandom";
-import Game2 from "../components/guessingGame";
+import ColorGame from "./GameComponents/ColorGame";
 import Header from "./GameComponents/Header";
 import GameButton from "./GameComponents/GameButton";
 
@@ -58,7 +58,7 @@ const GamePlay = ({ navigation, route }) => {
     console.log(playerOne, playerTwo);
     if (counter === 0) {
       const randomInt = getRandomInt(0, 30);
-      const kysymys = lisaaPelaaja(
+      const kysymys = addPlayertoQuestion(
         randomPlayerlist[0].player,
         randomPlayerlist[1].player,
         questionNumber[randomInt]
@@ -67,7 +67,7 @@ const GamePlay = ({ navigation, route }) => {
       setSelected(kysymys);
       setCounter(counter + 1);
     } else {
-      const kysymys = lisaaPelaaja(
+      const kysymys = addPlayertoQuestion(
         playerOne,
         playerTwo,
         questionNumber[counter]
@@ -85,9 +85,9 @@ const GamePlay = ({ navigation, route }) => {
     <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
       <Header style={{ flex: 1 }} />
       {counter % 3 === 0 ? (
-        <Game2 playerOne={playerOne} style={{ flex: 7 }} />
+        <ColorGame playerOne={playerOne} style={{ flex: 7 }} />
       ) : (
-        <Game selected={selected} counter={counter} style={{ flex: 7 }} />
+        <BaseGame selected={selected} counter={counter} style={{ flex: 7 }} />
       )}
       <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
     </View>

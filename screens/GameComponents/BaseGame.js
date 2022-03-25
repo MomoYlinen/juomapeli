@@ -19,7 +19,7 @@ import {
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
-const Game = (props) => {
+const BaseGame = (props) => {
   let [fontsLoaded] = useFonts({
     Nunito_200ExtraLight,
     Nunito_200ExtraLight_Italic,
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-export default Game;
+export default BaseGame;

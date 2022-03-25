@@ -2,13 +2,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   FlatList,
   TouchableOpacity,
-  ImageBackground,
   TouchableWithoutFeedback,
   Keyboard,
-  KeyboardAvoidingView,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import {
@@ -29,14 +26,12 @@ import {
 } from "@expo-google-fonts/nunito";
 import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import React, { useState } from "react";
-import PlayerItem from "../utils/playerItem";
-import AddPlayer from "../utils/addPlayer";
-import { LinearGradient } from "expo-linear-gradient";
+import PlayerItem from "./HomeComponents/playerItem";
+import AddPlayer from "./HomeComponents/addPlayer";
 import Logo1 from "../SvgImages/Logo";
 import TextAnimator from "../components/TextAnimator";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Feather } from "@expo/vector-icons";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
