@@ -48,6 +48,11 @@ const ColorGame = (props) => {
     setRightClick(questionRight);
   };
 
+  const rightCombine = () => {
+    setClickedRight(true);
+    handleRightClick();
+  };
+
   const handleLeftClick = () => {
     let questionLeft = Questions();
     setLeftClick(questionLeft);
@@ -84,77 +89,94 @@ const ColorGame = (props) => {
         </Text>
       </View>
       <View style={styles.buttonWrapper}>
-        {clickedLeft ? (
-          <Text
-            style={{
-              flex: 1,
-              backgroundColor: "#FCFCFC",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-              color: "#6534B9",
-              fontFamily: "Nunito_700Bold",
-              fontSize: 30,
-              marginRight: 12,
-            }}
-          >
-            {leftClick}
-          </Text>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              setClickedLeft(true), handleLeftClick();
-            }}
-            style={{
-              flex: 1,
-              backgroundColor: "#4166b5",
-              justifyContent: "center",
-              marginRight: 12,
-            }}
-          >
+        <View
+          style={{
+            flex: 1,
+            borderWidth: 2,
+            borderColor: "#4166b5",
+            marginRight: 6,
+          }}
+          opacity={clickedRight ? 0.3 : 1}
+        >
+          {clickedLeft ? (
             <Text
               style={{
                 flex: 1,
+                backgroundColor: "#FCFCFC",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                color: "#6534B9",
+                fontFamily: "Nunito_700Bold",
+                fontSize: 30,
+                marginTop: "40%",
               }}
-            ></Text>
-          </TouchableOpacity>
-        )}
-        {clickedRight ? (
-          <Text
-            style={{
-              flex: 1,
-              backgroundColor: "#FCFCFC",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-              color: "#6534B9",
-              fontFamily: "Nunito_700Bold",
-              fontSize: 30,
-              marginLeft: 12,
-            }}
-          >
-            {rightClick}
-          </Text>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              setClickedRight(true), handleRightClick();
-            }}
-            style={{
-              flex: 1,
-              backgroundColor: "#eb623f",
-              justifyContent: "center",
-              alignItems: "center",
-              marginLeft: 12,
-            }}
-          >
+            >
+              {leftClick}
+            </Text>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                setClickedLeft(clickedRight ? null : true), handleLeftClick();
+              }}
+              style={{
+                flex: 1,
+                backgroundColor: "#4166b5",
+                justifyContent: "center",
+              }}
+            >
+              <Text
+                style={{
+                  flex: 1,
+                }}
+              ></Text>
+            </TouchableOpacity>
+          )}
+        </View>
+        <View
+          style={{
+            flex: 1,
+            borderWidth: 2,
+            borderColor: "#eb623f",
+            marginLeft: 6,
+            justifyContent: "center",
+          }}
+          opacity={clickedLeft ? 0.3 : 1}
+        >
+          {clickedRight ? (
             <Text
               style={{
                 flex: 1,
+                backgroundColor: "#FCFCFC",
+                textAlign: "center",
+                color: "#6534B9",
+                fontFamily: "Nunito_700Bold",
+                fontSize: 30,
+                marginTop: "40%",
               }}
-            ></Text>
-          </TouchableOpacity>
-        )}
+            >
+              {rightClick}
+            </Text>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                setClickedRight(clickedLeft ? null : true), handleRightClick();
+              }}
+              style={{
+                flex: 1,
+                backgroundColor: "#eb623f",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  flex: 1,
+                }}
+              ></Text>
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
     </View>
   );
