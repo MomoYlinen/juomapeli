@@ -42,6 +42,17 @@ const questions = [
   },
   { question: "Anna kaksi huikkaa", playersNeeded: 1 },
   { question: "Anna kuusi huikkaa", playersNeeded: 1 },
+  { question: "Anna kuusi huikkaa", playersNeeded: 1 },
+  { question: "Anna neljä huikkaa", playersNeeded: 1 },
+  { question: "Anna kuusi huikkaa", playersNeeded: 1 },
+  { question: "Anna neljä huikkaa", playersNeeded: 1 },
+  { question: "Keksi sääntö", playersNeeded: 1 },
+  {
+    question: "Pelatkaa kivi-sakset-paperi, häviäjä juo kolme huikkaa",
+    playersNeeded: 2,
+  },
+  { question: "Vanhin pelaaja juo kaksi huikkaa", playersNeeded: 0 },
+  { question: "Nuorin pelaaja juo kolme huikkaa", playersNeeded: 0 },
 ];
 
 export default questions;

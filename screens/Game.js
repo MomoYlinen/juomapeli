@@ -12,7 +12,7 @@ const GamePlay = ({ navigation, route }) => {
   const [counter, setCounter] = useState(0);
   const [questionNumber, setQuestionNumber] = useState([
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
   ]);
   const [startNewGame, setStartNewGame] = useState(true);
   const [playerOne, setPlayerOne] = useState("");
@@ -43,7 +43,7 @@ const GamePlay = ({ navigation, route }) => {
       setPlayerTwo(randomPlayerlist[1].player);
     }
 
-    if (counter === 22) {
+    if (counter === 33) {
       setNeededPlayers("");
       setSelected("Peli on päättynyt");
       setCounter(0);
