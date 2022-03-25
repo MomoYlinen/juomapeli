@@ -53,9 +53,6 @@ const Game = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Logo1 style={{ marginTop: 48 }} />
-        </View>
         <View style={styles.content}>
           <View style={styles.textWrapper}>
             <Text
@@ -71,17 +68,6 @@ const Game = (props) => {
             </Text>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={props.handlerandomClick}
-          title="Seuraava kysymys"
-          style={styles.button}
-        >
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <AntDesign name="right" size={80} color="white" />
-          </View>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -89,7 +75,7 @@ const Game = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 7,
     backgroundColor: "#FCFCFC",
   },
   header: {

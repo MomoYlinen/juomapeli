@@ -4,6 +4,8 @@ import Game from "../components/game";
 import lisaaPelaaja from "../questions/testquestions";
 import getRandomInt from "../utils/getRandom";
 import Game2 from "../components/guessingGame";
+import Header from "./GameGomponents/Header";
+import GameButton from "./GameGomponents/GameButton";
 
 const GamePlay = ({ navigation, route }) => {
   const [selected, setSelected] = useState();
@@ -79,26 +81,18 @@ const GamePlay = ({ navigation, route }) => {
     setStartNewGame(false);
     handlerandomClick();
   }
-  if (counter % 3 === 0) {
-    return (
-      <Game2
-        handlerandomClick={handlerandomClick}
-        selected={selected}
-        counter={counter}
-        playerOne={playerOne}
-        style={{ flex: 1 }}
-      />
-    );
-  } else {
-    return (
+  return (
+    <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
+      <Header style={{ flex: 1 }} />
       <Game
         handlerandomClick={handlerandomClick}
         selected={selected}
         counter={counter}
-        style={{ flex: 1 }}
+        style={{ flex: 7 }}
       />
-    );
-  }
+      <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
+    </View>
+  );
 };
 
 export default GamePlay;
