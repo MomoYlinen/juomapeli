@@ -19,7 +19,6 @@ import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import React, { useState } from "react";
 import PlayerItem from "./HomeComponents/playerItem";
 import AddPlayer from "./HomeComponents/addPlayer";
-import TextAnimator from "../components/TextAnimator";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import ReadyButton from "./HomeComponents/ReadyButton";
@@ -28,9 +27,6 @@ import Headliner from "./HomeComponents/Headliner";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
-  const _onFinish = () => {
-    // Alert.alert('Animation', 'It is done!');
-  };
 
   let [fontsLoaded] = useFonts({
     Nunito_200ExtraLight,
@@ -116,23 +112,6 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     backgroundColor: "#FCFCFC",
-  },
-  header: {
-    flex: 5,
-  },
-  logo: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  lottie: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  headerText: {
-    flex: 1,
-    alignItems: "center",
   },
   keyboardContainer: {
     flex: 6,
