@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import React, { useState, useRef } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Animated,
+} from "react-native";
 import {
   Nunito_200ExtraLight,
   Nunito_200ExtraLight_Italic,
@@ -42,6 +48,15 @@ const ColorGame = (props) => {
   const [clickedRight, setClickedRight] = useState(false);
   const [clickedLeft, setClickedLeft] = useState(false);
 
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  // Will change fadeAnim value to 1 in 5 seconds
+  Animated.timing(fadeAnim, {
+    toValue: 1,
+    duration: 700,
+    useNativeDriver: true,
+  }).start();
+
   const handleRightClick = () => {
     console.log("clicked1");
     let questionRight = Questions();
@@ -63,7 +78,9 @@ const ColorGame = (props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={{ flex: 7, backgroundColor: "#FCFCFC", opacity: fadeAnim }}
+    >
       <View style={styles.textWrapper}>
         <Text
           style={{
@@ -78,12 +95,12 @@ const ColorGame = (props) => {
         </Text>
         <Text
           style={{
-            fontSize: 36,
+            fontSize: 40,
             textAlign: "center",
             fontWeight: "bold",
             color: "#6534B9",
             fontFamily: "Nunito_700Bold",
-            marginTop: 16,
+            marginTop: 48,
           }}
         >
           Valitse väri
@@ -109,8 +126,9 @@ const ColorGame = (props) => {
                 textAlign: "center",
                 color: "#6534B9",
                 fontFamily: "Nunito_700Bold",
-                fontSize: 30,
-                marginTop: "40%",
+                fontSize: 16,
+                marginTop: "30%",
+                marginHorizontal: 4,
               }}
             >
               {leftClick}
@@ -152,8 +170,9 @@ const ColorGame = (props) => {
                 textAlign: "center",
                 color: "#6534B9",
                 fontFamily: "Nunito_700Bold",
-                fontSize: 30,
-                marginTop: "40%",
+                fontSize: 16,
+                marginTop: "30%",
+                marginHorizontal: 4,
               }}
             >
               {rightClick}
@@ -179,7 +198,7 @@ const ColorGame = (props) => {
           )}
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

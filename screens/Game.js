@@ -106,7 +106,7 @@ const GamePlay = ({ navigation, route }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
       <Header style={{ flex: 1 }} />
-      {counter % 7 === 0 ? (
+      {counter % 5 === 0 ? (
         <ColorGame playerOne={playerOne} style={{ flex: 7 }} />
       ) : (
         <BaseGame

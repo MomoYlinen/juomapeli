@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useRef } from "react";
+import { StyleSheet, Text, View, Animated } from "react-native";
 import {
   Nunito_200ExtraLight,
   Nunito_200ExtraLight_Italic,
@@ -37,12 +37,21 @@ const BaseGame = (props) => {
     Nunito_900Black_Italic,
   });
 
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  // Will change fadeAnim value to 1 in 5 seconds
+  Animated.timing(fadeAnim, {
+    toValue: 1,
+    duration: 500,
+    useNativeDriver: true,
+  }).start();
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={{ flex: 7, opacity: fadeAnim }}>
       <View style={styles.textWrapper}>
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <Text
@@ -72,7 +81,7 @@ const BaseGame = (props) => {
           </Text>
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
