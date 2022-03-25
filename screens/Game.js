@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Game from "../components/game";
 import lisaaPelaaja from "../questions/testquestions";
 import getRandomInt from "../utils/getRandom";
+import Game2 from "../components/guessingGame";
 
 const GamePlay = ({ navigation, route }) => {
   const [selected, setSelected] = useState();
@@ -12,6 +13,8 @@ const GamePlay = ({ navigation, route }) => {
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
   ]);
   const [startNewGame, setStartNewGame] = useState(true);
+  const [playerOne, setPlayerOne] = useState("");
+  const [playerTwo, setPlayerTwo] = useState("");
 
   const players = navigation.getParam("gamers");
 
@@ -32,6 +35,9 @@ const GamePlay = ({ navigation, route }) => {
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
+
+      setPlayerOne(randomPlayerlist[0].player);
+      setPlayerTwo(randomPlayerlist[1].player);
     }
 
     if (counter > 33) {
@@ -45,14 +51,14 @@ const GamePlay = ({ navigation, route }) => {
       .sort((a, b) => a.sort - b.sort)
       .map(({ value }) => value);
 
-    const randomPlayerOne = randomPlayerlist[0].player;
-    const randomPlayerTwo = randomPlayerlist[1].player;
-    console.log(randomPlayerOne, randomPlayerTwo);
+    setPlayerOne(randomPlayerlist[0].player);
+    setPlayerTwo(randomPlayerlist[1].player);
+    console.log(playerOne, playerTwo);
     if (counter === 0) {
       const randomInt = getRandomInt(0, 30);
       const kysymys = lisaaPelaaja(
-        randomPlayerOne,
-        randomPlayerTwo,
+        randomPlayerlist[0].player,
+        randomPlayerlist[1].player,
         questionNumber[randomInt]
       );
 
@@ -60,8 +66,8 @@ const GamePlay = ({ navigation, route }) => {
       setCounter(counter + 1);
     } else {
       const kysymys = lisaaPelaaja(
-        randomPlayerOne,
-        randomPlayerTwo,
+        playerOne,
+        playerTwo,
         questionNumber[counter]
       );
       setSelected(kysymys);
@@ -73,15 +79,26 @@ const GamePlay = ({ navigation, route }) => {
     setStartNewGame(false);
     handlerandomClick();
   }
-
-  return (
-    <Game
-      handlerandomClick={handlerandomClick}
-      selected={selected}
-      counter={counter}
-      style={{ flex: 1 }}
-    />
-  );
+  if (counter % 3 === 0) {
+    return (
+      <Game2
+        handlerandomClick={handlerandomClick}
+        selected={selected}
+        counter={counter}
+        playerOne={playerOne}
+        style={{ flex: 1 }}
+      />
+    );
+  } else {
+    return (
+      <Game
+        handlerandomClick={handlerandomClick}
+        selected={selected}
+        counter={counter}
+        style={{ flex: 1 }}
+      />
+    );
+  }
 };
 
 export default GamePlay;

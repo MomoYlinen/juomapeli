@@ -68,11 +68,11 @@ const AddPlayer = ({ submitHandler }) => {
         <View style={styles.inputWrapper}>
           <View
             style={{
-              borderColor: isFocused ? "#6534B9" : "white",
+              borderColor: isFocused ? "#6534B9" : "#FCFCFC",
               borderWidth: isFocused ? 1 : 1,
               flex: 5,
               justifyContent: "center",
-              color: "white",
+              color: "#FCFCFC",
               borderRadius: 100,
               marginHorizontal: 0,
               alignItems: "center",
@@ -84,7 +84,7 @@ const AddPlayer = ({ submitHandler }) => {
                 : { width: 3, height: 2 },
               shadowOpacity: 0.9,
               shadowRadius: 1,
-              backgroundColor: "white",
+              backgroundColor: "#FCFCFC",
             }}
           >
             <TextInput
@@ -97,7 +97,7 @@ const AddPlayer = ({ submitHandler }) => {
               maxLength={14}
               enablesReturnKeyAutomatically={true}
               keyboardAppearance="light"
-              keyboardType="ascii-capable"
+              keyboardType="default"
               onBlur={() => setIsFocused(false)}
               onFocus={() => setIsFocused(true)}
             />
@@ -111,7 +111,13 @@ const AddPlayer = ({ submitHandler }) => {
             style={{ flex: 1 }}
           >
             <View style={styles.button}>
-              <Feather name="plus-circle" size={45} color="#6534B9" />
+              <Feather
+                name="plus-circle"
+                size={45}
+                color={
+                  isFocused ? "rgba(101, 52, 185,1)" : "rgba(101, 52, 185,0.8)"
+                }
+              />
             </View>
           </TouchableOpacity>
         </View>
@@ -132,8 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     marginHorizontal: 24,
-    marginVertical: 12,
-    marginBottom: 94,
+    marginBottom: "27%",
   },
   input: {
     borderColor: "white",
@@ -150,7 +155,7 @@ const styles = StyleSheet.create({
   inputcotainer: {
     flex: 5,
     justifyContent: "center",
-    color: "white",
+    color: "#FCFCFC",
     borderRadius: 100,
     marginHorizontal: 0,
     alignItems: "center",
@@ -160,7 +165,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 6, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 1,
-    backgroundColor: "white",
+    backgroundColor: "#FCFCFC",
   },
   button: {
     flex: 1,
@@ -168,8 +173,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 100,
-    borderWidth: 1,
-    borderColor: "white",
   },
 });
 export default AddPlayer;

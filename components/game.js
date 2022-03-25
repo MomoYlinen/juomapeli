@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Logo1 from "../SvgImages/Logo";
 import {
@@ -18,6 +24,7 @@ import {
   Nunito_900Black,
   Nunito_900Black_Italic,
 } from "@expo-google-fonts/nunito";
+import { AntDesign } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
@@ -64,27 +71,17 @@ const Game = (props) => {
             </Text>
           </View>
         </View>
-        <View style={styles.button}>
-          <TouchableOpacity
-            onPress={props.handlerandomClick}
-            title="Seuraava kysymys"
+        <TouchableOpacity
+          onPress={props.handlerandomClick}
+          title="Seuraava kysymys"
+          style={styles.button}
+        >
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Text
-              style={{
-                fontSize: 20,
-                textAlign: "center",
-                marginBottom: 0,
-                color: "#FCFCFC",
-                fontWeight: "bold",
-                fontFamily: "Nunito_400Regular",
-              }}
-            >
-              {props.counter < 1 || props.counter > 33
-                ? "Aloita Uusi Peli "
-                : "Seuraava Kysymys"}
-            </Text>
-          </TouchableOpacity>
-        </View>
+            <AntDesign name="right" size={80} color="white" />
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -108,12 +105,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#6534B9",
     justifyContent: "center",
     alignItems: "center",
-    height: 100,
-    borderWidth: 1,
-    borderColor: "black",
     borderRadius: 100,
-    marginVertical: 80,
-    marginHorizontal: 80,
+    marginVertical: 68,
+    marginHorizontal: "37%",
+    paddingVertical: 12,
   },
   textWrapper: {
     flex: 1,
