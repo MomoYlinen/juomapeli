@@ -1,13 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
-import LottieView from "lottie-react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import {
   Nunito_200ExtraLight,
   Nunito_200ExtraLight_Italic,
@@ -28,11 +19,11 @@ import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import React, { useState } from "react";
 import PlayerItem from "./HomeComponents/playerItem";
 import AddPlayer from "./HomeComponents/addPlayer";
-import Logo1 from "../SvgImages/Logo";
 import TextAnimator from "../components/TextAnimator";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import ReadyButton from "./HomeComponents/ReadyButton";
+import HomeHeader from "./HomeComponents/HomeHeader";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
@@ -85,24 +76,7 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <View style={styles.header}>
-        <View style={styles.logo}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Keyboard.dismiss();
-            }}
-          >
-            <Logo1 style={{ marginTop: 16 }} />
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={styles.lottie}>
-          <LottieView
-            source={require("../assets/lottie/HuikkaBottleAnim_Purple")}
-            autoPlay={true}
-            loop={true}
-          />
-        </View>
-      </View>
+      <HomeHeader style={{ flex: 5 }} />
       <View style={styles.keyboardContainer}>
         <View style={styles.headerText}>
           <TextAnimator
@@ -201,20 +175,6 @@ const styles = StyleSheet.create({
     marginTop: 24,
     maxHeight: "40%",
     marginHorizontal: 8,
-  },
-  button: {
-    flex: 1,
-    backgroundColor: "#6534B9",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 100,
-    marginVertical: 68,
-    marginHorizontal: 100,
-    shadowColor: "#171717",
-    shadowOffset: { width: 1, height: 5 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
-    paddingVertical: 12,
   },
 });
 
