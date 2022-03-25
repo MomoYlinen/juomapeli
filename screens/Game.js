@@ -1,22 +1,23 @@
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
 import React, { useState } from "react";
 import BaseGame from "./GameComponents/BaseGame";
-import addPlayertoQuestion from "../questions/testquestions";
 import getRandomInt from "../utils/getRandom";
 import ColorGame from "./GameComponents/ColorGame";
 import Header from "./GameComponents/Header";
 import GameButton from "./GameComponents/GameButton";
+import Questions from "../questions/Questions";
 
 const GamePlay = ({ navigation, route }) => {
   const [selected, setSelected] = useState();
   const [counter, setCounter] = useState(0);
   const [questionNumber, setQuestionNumber] = useState([
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+    21, 22, 23,
   ]);
   const [startNewGame, setStartNewGame] = useState(true);
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
+  const [neededPlayers, setNeededPlayers] = useState("");
 
   const players = navigation.getParam("gamers");
 
@@ -25,7 +26,7 @@ const GamePlay = ({ navigation, route }) => {
       setSelected("Lisää pelaajia");
       return;
     }
-
+    console.log(counter);
     if (counter === 0) {
       let randomize = questionNumber
         .map((value) => ({ value, sort: Math.random() }))
@@ -42,7 +43,8 @@ const GamePlay = ({ navigation, route }) => {
       setPlayerTwo(randomPlayerlist[1].player);
     }
 
-    if (counter > 33) {
+    if (counter === 22) {
+      setNeededPlayers("");
       setSelected("Peli on päättynyt");
       setCounter(0);
       return;
@@ -55,24 +57,44 @@ const GamePlay = ({ navigation, route }) => {
 
     setPlayerOne(randomPlayerlist[0].player);
     setPlayerTwo(randomPlayerlist[1].player);
-    console.log(playerOne, playerTwo);
     if (counter === 0) {
-      const randomInt = getRandomInt(0, 30);
-      const kysymys = addPlayertoQuestion(
-        randomPlayerlist[0].player,
-        randomPlayerlist[1].player,
-        questionNumber[randomInt]
-      );
+      const randomInt = getRandomInt(0, 10);
+      const kysymys = Questions[randomInt];
 
-      setSelected(kysymys);
+      if (kysymys.playersNeeded === 1) {
+        setNeededPlayers(playerOne);
+        console.log("Yksi");
+      }
+
+      if (kysymys.playersNeeded === 2) {
+        setNeededPlayers(`${playerOne} ja ${playerTwo}`);
+        console.log("Kaksi");
+      }
+
+      if (kysymys.playersNeeded === 0) {
+        setNeededPlayers("");
+        console.log("Kaikki");
+      }
+
+      setSelected(kysymys.question);
       setCounter(counter + 1);
     } else {
-      const kysymys = addPlayertoQuestion(
-        playerOne,
-        playerTwo,
-        questionNumber[counter]
-      );
-      setSelected(kysymys);
+      const kysymys = Questions[questionNumber[counter]];
+
+      if (kysymys.playersNeeded === 1) {
+        setNeededPlayers(playerOne);
+      }
+
+      if (kysymys.playersNeeded === 2) {
+        setNeededPlayers(`${playerOne} ja ${playerTwo}`);
+      }
+
+      if (kysymys.playersNeeded === 0) {
+        setNeededPlayers("");
+        console.log("Kaikki");
+      }
+
+      setSelected(kysymys.question);
       setCounter(counter + 1);
     }
   };
@@ -84,10 +106,15 @@ const GamePlay = ({ navigation, route }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
       <Header style={{ flex: 1 }} />
-      {counter % 3 === 0 ? (
+      {counter % 7 === 0 ? (
         <ColorGame playerOne={playerOne} style={{ flex: 7 }} />
       ) : (
-        <BaseGame selected={selected} counter={counter} style={{ flex: 7 }} />
+        <BaseGame
+          selected={selected}
+          counter={counter}
+          playerOne={neededPlayers}
+          style={{ flex: 7 }}
+        />
       )}
       <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
     </View>
