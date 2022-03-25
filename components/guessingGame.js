@@ -67,120 +67,102 @@ const GuessingGame = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Logo1 style={{ marginTop: 48 }} />
-        </View>
-        <View style={styles.content}>
-          <View style={styles.textWrapper}>
-            <Text
-              style={{
-                fontSize: 24,
-                textAlign: "center",
-                fontWeight: "bold",
-                color: "#6534B9",
-                fontFamily: "Nunito_700Bold",
-              }}
-            >
-              {props.playerOne}
-            </Text>
-            <Text
-              style={{
-                fontSize: 30,
-                textAlign: "center",
-                fontWeight: "bold",
-                color: "#6534B9",
-                fontFamily: "Nunito_700Bold",
-              }}
-            >
-              Valitse väri
-            </Text>
-          </View>
-          <View style={styles.buttonWrapper}>
-            {clickedLeft ? (
-              <Text
-                style={{
-                  flex: 1,
-                  backgroundColor: "#FCFCFC",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                  color: "#6534B9",
-                  fontFamily: "Nunito_700Bold",
-                  fontSize: 30,
-                  marginRight: 12,
-                }}
-              >
-                {leftClick}
-              </Text>
-            ) : (
-              <TouchableOpacity
-                onPress={() => {
-                  setClickedLeft(true), handleLeftClick();
-                }}
-                style={{
-                  flex: 1,
-                  backgroundColor: "#4166b5",
-                  justifyContent: "center",
-                  marginRight: 12,
-                }}
-              >
-                <Text
-                  style={{
-                    flex: 1,
-                  }}
-                ></Text>
-              </TouchableOpacity>
-            )}
-            {clickedRight ? (
-              <Text
-                style={{
-                  flex: 1,
-                  backgroundColor: "#FCFCFC",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                  color: "#6534B9",
-                  fontFamily: "Nunito_700Bold",
-                  fontSize: 30,
-                  marginLeft: 12,
-                }}
-              >
-                {rightClick}
-              </Text>
-            ) : (
-              <TouchableOpacity
-                onPress={() => {
-                  setClickedRight(true), handleRightClick();
-                }}
-                style={{
-                  flex: 1,
-                  backgroundColor: "#eb623f",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginLeft: 12,
-                }}
-              >
-                <Text
-                  style={{
-                    flex: 1,
-                  }}
-                ></Text>
-              </TouchableOpacity>
-            )}
-          </View>
-        </View>
-        <TouchableOpacity
-          onPress={props.handlerandomClick}
-          title="Seuraava kysymys"
-          style={styles.button}
+      <View style={styles.textWrapper}>
+        <Text
+          style={{
+            fontSize: 24,
+            textAlign: "center",
+            fontWeight: "bold",
+            color: "#6534B9",
+            fontFamily: "Nunito_700Bold",
+          }}
         >
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          {props.playerOne}
+        </Text>
+        <Text
+          style={{
+            fontSize: 30,
+            textAlign: "center",
+            fontWeight: "bold",
+            color: "#6534B9",
+            fontFamily: "Nunito_700Bold",
+          }}
+        >
+          Valitse väri
+        </Text>
+      </View>
+      <View style={styles.buttonWrapper}>
+        {clickedLeft ? (
+          <Text
+            style={{
+              flex: 1,
+              backgroundColor: "#FCFCFC",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              color: "#6534B9",
+              fontFamily: "Nunito_700Bold",
+              fontSize: 30,
+              marginRight: 12,
+            }}
           >
-            <AntDesign name="right" size={80} color="white" />
-          </View>
-        </TouchableOpacity>
+            {leftClick}
+          </Text>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              setClickedLeft(true), handleLeftClick();
+            }}
+            style={{
+              flex: 1,
+              backgroundColor: "#4166b5",
+              justifyContent: "center",
+              marginRight: 12,
+            }}
+          >
+            <Text
+              style={{
+                flex: 1,
+              }}
+            ></Text>
+          </TouchableOpacity>
+        )}
+        {clickedRight ? (
+          <Text
+            style={{
+              flex: 1,
+              backgroundColor: "#FCFCFC",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              color: "#6534B9",
+              fontFamily: "Nunito_700Bold",
+              fontSize: 30,
+              marginLeft: 12,
+            }}
+          >
+            {rightClick}
+          </Text>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              setClickedRight(true), handleRightClick();
+            }}
+            style={{
+              flex: 1,
+              backgroundColor: "#eb623f",
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: 12,
+            }}
+          >
+            <Text
+              style={{
+                flex: 1,
+              }}
+            ></Text>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -188,33 +170,16 @@ const GuessingGame = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 7,
     backgroundColor: "#FCFCFC",
   },
-  header: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  content: {
-    flex: 7,
-  },
-  button: {
-    flex: 1,
-    backgroundColor: "#6534B9",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 100,
-    marginVertical: 68,
-    marginHorizontal: "37%",
-    paddingVertical: 12,
-  },
   textWrapper: {
-    flex: 2,
+    flex: 1,
     marginHorizontal: 20,
     marginBottom: 0,
     marginTop: 50,
     justifyContent: "center",
+    paddingVertical: 64,
   },
   buttonWrapper: {
     flex: 1,
