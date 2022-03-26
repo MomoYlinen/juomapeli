@@ -53,7 +53,7 @@ const ColorGame = (props) => {
   // Will change fadeAnim value to 1 in 5 seconds
   Animated.timing(fadeAnim, {
     toValue: 1,
-    duration: 700,
+    duration: 500,
     useNativeDriver: true,
   }).start();
 

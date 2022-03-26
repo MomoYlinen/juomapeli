@@ -58,7 +58,7 @@ const GamePlay = ({ navigation, route }) => {
     setPlayerOne(randomPlayerlist[0].player);
     setPlayerTwo(randomPlayerlist[1].player);
     if (counter === 0) {
-      const randomInt = getRandomInt(0, 10);
+      const randomInt = getRandomInt(0, 7);
       const kysymys = Questions[randomInt];
 
       if (kysymys.playersNeeded === 1) {
@@ -106,16 +106,18 @@ const GamePlay = ({ navigation, route }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
       <Header style={{ flex: 1 }} />
-      {counter % 5 === 0 ? (
-        <ColorGame playerOne={playerOne} style={{ flex: 7 }} />
-      ) : (
-        <BaseGame
-          selected={selected}
-          counter={counter}
-          playerOne={neededPlayers}
-          style={{ flex: 7 }}
-        />
-      )}
+      <View style={{ flex: 7 }}>
+        {counter % 5 === 0 ? (
+          <ColorGame playerOne={playerOne} style={{ flex: 7 }} />
+        ) : (
+          <BaseGame
+            selected={selected}
+            counter={counter}
+            playerOne={neededPlayers}
+            style={{ flex: 7 }}
+          />
+        )}
+      </View>
       <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
     </View>
   );

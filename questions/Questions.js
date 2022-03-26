@@ -1,4 +1,14 @@
 const questions = [
+  { question: "Jos olet sinkku juo kolme huikkaa", playersNeeded: 0 },
+  { question: "Vanhin pelaaja juo kaksi huikkaa", playersNeeded: 0 },
+  { question: "Nuorin pelaaja juo kolme huikkaa", playersNeeded: 0 },
+  {
+    question: "Jos olet syntynyt 2000-luvulla, juo kolme huikkaa",
+    playersNeeded: 0,
+  },
+  { question: "Vanhin pelaaja juo kaksi huikkaa", playersNeeded: 0 },
+  { question: "Nuorin pelaaja juo kolme huikkaa", playersNeeded: 0 },
+  { question: "Kaikki juo vettä", playersNeeded: 0 },
   { question: "Juo yksi huikka", playersNeeded: 1 },
   { question: "Anna kaksi huikkaa", playersNeeded: 1 },
   { question: "Kategoriat", playersNeeded: 1 },
@@ -15,14 +25,7 @@ const questions = [
   },
   { question: "Teistä lyhyemmämpi saa antaa kaksi huikkaa", playersNeeded: 2 },
   { question: "Jos olet parisuhteessa juo kolme huikkaa", playersNeeded: 0 },
-  { question: "Jos olet sinkku juo kolme huikkaa", playersNeeded: 0 },
-  { question: "Vanhin pelaaja juo kaksi huikkaa", playersNeeded: 0 },
-  { question: "Nuorin pelaaja juo kolme huikkaa", playersNeeded: 0 },
-  {
-    question: "Jos olet syntynyt 200-luvulla, juo kolme huikkaa",
-    playersNeeded: 0,
-  },
-  { question: "Kaikki juo vettä", playersNeeded: 0 },
+
   { question: "Kategoriat", playersNeeded: 1 },
   { question: "Vesiputous", playersNeeded: 1 },
   { question: "Äänestys, keksi aihe", playersNeeded: 1 },
@@ -51,8 +54,6 @@ const questions = [
     question: "Pelatkaa kivi-sakset-paperi, häviäjä juo kolme huikkaa",
     playersNeeded: 2,
   },
-  { question: "Vanhin pelaaja juo kaksi huikkaa", playersNeeded: 0 },
-  { question: "Nuorin pelaaja juo kolme huikkaa", playersNeeded: 0 },
 ];
 
 export default questions;
