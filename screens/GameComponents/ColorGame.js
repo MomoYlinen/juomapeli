@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -50,12 +50,15 @@ const ColorGame = (props) => {
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
-  // Will change fadeAnim value to 1 in 5 seconds
-  Animated.timing(fadeAnim, {
-    toValue: 1,
-    duration: 500,
-    useNativeDriver: true,
-  }).start();
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+    setClickedRight(false);
+    setClickedLeft(false);
+  }, [props.playerOne]);
 
   const handleRightClick = () => {
     console.log("clicked1");

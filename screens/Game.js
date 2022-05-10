@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BaseGame from "./GameComponents/BaseGame";
 import getRandomInt from "../utils/getRandom";
 import ColorGame from "./GameComponents/ColorGame";
 import Header from "./GameComponents/Header";
 import GameButton from "./GameComponents/GameButton";
 import Questions from "../questions/Questions";
+import AppLoading from "expo-app-loading";
+import GameEnding from "./GameComponents/GameEnding";
 
 const GamePlay = ({ navigation, route }) => {
   const [selected, setSelected] = useState();
@@ -18,14 +20,15 @@ const GamePlay = ({ navigation, route }) => {
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
   const [neededPlayers, setNeededPlayers] = useState("");
+  const [gameMode, setGameMode] = useState("");
 
   const players = navigation.getParam("gamers");
 
+  const backToMainMenu = () => {
+    navigation.navigate("Home");
+  };
+
   const handlerandomClick = () => {
-    if (players.length <= 2) {
-      setSelected("Lisää pelaajia");
-      return;
-    }
     console.log(counter);
     if (counter === 0) {
       let randomize = questionNumber
@@ -45,6 +48,7 @@ const GamePlay = ({ navigation, route }) => {
 
     if (counter === 33) {
       setNeededPlayers("");
+      setGameMode("End");
       setSelected("Peli on päättynyt");
       setCounter(0);
       return;
@@ -72,7 +76,7 @@ const GamePlay = ({ navigation, route }) => {
       if (kysymys.playersNeeded === 0) {
         setNeededPlayers("");
       }
-
+      setGameMode(kysymys.gamemode);
       setSelected(kysymys.question);
       setCounter(counter + 1);
     } else {
@@ -89,7 +93,7 @@ const GamePlay = ({ navigation, route }) => {
       if (kysymys.playersNeeded === 0) {
         setNeededPlayers("");
       }
-
+      setGameMode(kysymys.gamemode);
       setSelected(kysymys.question);
       setCounter(counter + 1);
     }
@@ -99,24 +103,59 @@ const GamePlay = ({ navigation, route }) => {
     setStartNewGame(false);
     handlerandomClick();
   }
-  return (
-    <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
-      <Header style={{ flex: 1 }} />
-      <View style={{ flex: 7 }}>
-        {counter % 5 === 0 ? (
-          <ColorGame playerOne={playerOne} style={{ flex: 7 }} />
-        ) : (
+
+  if (gameMode === "Lataa") {
+    return <AppLoading />;
+  }
+
+  if (gameMode === "BaseGame") {
+    return (
+      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
+        <Header style={{ flex: 1 }} />
+        <View style={{ flex: 7 }}>
           <BaseGame
             selected={selected}
             counter={counter}
             playerOne={neededPlayers}
             style={{ flex: 7 }}
           />
-        )}
+        </View>
+        <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
       </View>
-      <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
-    </View>
-  );
+    );
+  }
+
+  if (gameMode === "ColorGame") {
+    return (
+      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
+        <Header style={{ flex: 1 }} />
+        <View style={{ flex: 7 }}>
+          <ColorGame
+            selected={selected}
+            counter={counter}
+            playerOne={neededPlayers}
+            style={{ flex: 7 }}
+          />
+        </View>
+        <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
+      </View>
+    );
+  }
+
+  if (gameMode === "End") {
+    return (
+      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
+        <Header style={{ flex: 1 }} />
+        <View style={{ flex: 7 }}>
+          <GameEnding
+            backToHome={backToMainMenu}
+            handlerandomClick={handlerandomClick}
+            style={{ flex: 7 }}
+          />
+        </View>
+      </View>
+    );
+  }
 };
 
 export default GamePlay;

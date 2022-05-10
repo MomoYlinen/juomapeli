@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { StyleSheet, Text, View, Animated } from "react-native";
 import {
   Nunito_200ExtraLight,
@@ -39,7 +39,12 @@ const BaseGame = (props) => {
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
-  // Will change fadeAnim value to 1 in 5 seconds
+  Animated.timing(fadeAnim, {
+    toValue: 0,
+    duration: 10,
+    useNativeDriver: true,
+  }).start();
+
   Animated.timing(fadeAnim, {
     toValue: 1,
     duration: 500,
