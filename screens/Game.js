@@ -63,17 +63,14 @@ const GamePlay = ({ navigation, route }) => {
 
       if (kysymys.playersNeeded === 1) {
         setNeededPlayers(playerOne);
-        console.log("Yksi");
       }
 
       if (kysymys.playersNeeded === 2) {
         setNeededPlayers(`${playerOne} ja ${playerTwo}`);
-        console.log("Kaksi");
       }
 
       if (kysymys.playersNeeded === 0) {
         setNeededPlayers("");
-        console.log("Kaikki");
       }
 
       setSelected(kysymys.question);
@@ -91,7 +88,6 @@ const GamePlay = ({ navigation, route }) => {
 
       if (kysymys.playersNeeded === 0) {
         setNeededPlayers("");
-        console.log("Kaikki");
       }
 
       setSelected(kysymys.question);
