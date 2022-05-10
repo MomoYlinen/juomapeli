@@ -1,16 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  FlatList,
-  TouchableOpacity,
-  ImageBackground,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-} from "react-native";
-import LottieView from "lottie-react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import {
   Nunito_200ExtraLight,
   Nunito_200ExtraLight_Italic,
@@ -29,20 +17,16 @@ import {
 } from "@expo-google-fonts/nunito";
 import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import React, { useState } from "react";
-import PlayerItem from "../utils/playerItem";
-import AddPlayer from "../utils/addPlayer";
-import { LinearGradient } from "expo-linear-gradient";
-import Logo1 from "../SvgImages/Logo";
-import TextAnimator from "../components/TextAnimator";
+import PlayerItem from "./HomeComponents/playerItem";
+import AddPlayer from "./HomeComponents/addPlayer";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Feather } from "@expo/vector-icons";
+import ReadyButton from "./HomeComponents/ReadyButton";
+import HomeHeader from "./HomeComponents/HomeHeader";
+import Headliner from "./HomeComponents/Headliner";
 
 const Home = ({ navigation }) => {
   const [players, setPlayers] = useState([]);
-  const _onFinish = () => {
-    // Alert.alert('Animation', 'It is done!');
-  };
 
   let [fontsLoaded] = useFonts({
     Nunito_200ExtraLight,
@@ -89,52 +73,9 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <View style={styles.header}>
-        <View style={styles.logo}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Keyboard.dismiss();
-            }}
-          >
-            <Logo1 style={{ marginTop: 16 }} />
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={styles.lottie}>
-          <LottieView
-            source={require("../assets/lottie/HuikkaBottleAnim_Purple")}
-            autoPlay={true}
-            loop={true}
-          />
-        </View>
-      </View>
+      <HomeHeader style={{ flex: 5 }} />
       <View style={styles.keyboardContainer}>
-        <View style={styles.headerText}>
-          <TextAnimator
-            content="Ketkä juovat tänään?"
-            textStyle={{
-              fontSize: 24,
-              textAlign: "center",
-              color: "#6534B9",
-              fontWeight: "bold",
-              fontFamily: "Nunito_700Bold",
-            }}
-            duration={1000}
-            onFinish={_onFinish}
-          />
-          <Text
-            style={{
-              fontSize: 16,
-              textAlign: "center",
-              color: "#6534B9",
-              fontWeight: "bold",
-              fontFamily: "Nunito_300Light",
-            }}
-          >
-            {players.length >= 3
-              ? "Hyvä! olet valmis aloittamaan"
-              : "Tarvisemme vähintään kolme pelaajaa"}
-          </Text>
-        </View>
+        <Headliner style={{ flex: 1 }} playersLength={players.length} />
         <View style={styles.addplayerWrapper}>
           <FlatList
             columnWrapperStyle={{ justifyContent: "center" }}
@@ -155,37 +96,11 @@ const Home = ({ navigation }) => {
           <AddPlayer submitHandler={submitHandler} />
         </View>
       </View>
-      <TouchableOpacity
-        style={{
-          flex: 1,
-          backgroundColor: players.length >= 3 ? "#6534B9" : "#FCFCFC",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: 100,
-          marginVertical: 68,
-          marginHorizontal: 100,
-          shadowColor: players.length >= 3 ? "#171717" : "#FCFCFC",
-          shadowOffset: players.length >= 3 ? { width: 1, height: 5 } : null,
-          shadowOpacity: players.length >= 3 ? 0.4 : null,
-          shadowRadius: players.length >= 3 ? 2 : null,
-          paddingVertical: 12,
-        }}
-        onPress={players.length >= 3 ? pressHandler : null}
-      >
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              textAlign: "center",
-              fontWeight: "bold",
-              color: "white",
-              fontFamily: "Nunito_600SemiBold",
-            }}
-          >
-            Valmis
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <ReadyButton
+        style={{ flex: 1 }}
+        pressHandler={pressHandler}
+        playersLength={players.length}
+      />
     </View>
   );
 };
@@ -197,23 +112,6 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     backgroundColor: "#FCFCFC",
-  },
-  header: {
-    flex: 5,
-  },
-  logo: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  lottie: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  headerText: {
-    flex: 1,
-    alignItems: "center",
   },
   keyboardContainer: {
     flex: 6,
@@ -231,20 +129,6 @@ const styles = StyleSheet.create({
     marginTop: 24,
     maxHeight: "40%",
     marginHorizontal: 8,
-  },
-  button: {
-    flex: 1,
-    backgroundColor: "#6534B9",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 100,
-    marginVertical: 68,
-    marginHorizontal: 100,
-    shadowColor: "#171717",
-    shadowOffset: { width: 1, height: 5 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
-    paddingVertical: 12,
   },
 });
 
