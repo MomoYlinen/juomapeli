@@ -5,6 +5,51 @@ const questions = [
     playersNeeded: 0,
   },
   {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
+    gamemode: "SlotGame",
+    question: "None",
+    playersNeeded: 1,
+  },
+  {
     gamemode: "ColorGame",
     question: "None",
     playersNeeded: 1,
