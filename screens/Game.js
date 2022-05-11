@@ -106,7 +106,6 @@ const GamePlay = ({ navigation, route }) => {
     setPlayerOne(randomPlayerlist[0].player);
     setPlayerTwo(randomPlayerlist[1].player);
     if (counter === 0) {
-      console.log("Kysymyksien määrä ", Questions.length);
       const randomInt = getRandomInt(0, 7);
       const kysymys = Questions[randomInt];
 
@@ -237,7 +236,7 @@ const GamePlay = ({ navigation, route }) => {
           >
             <View style={{ flex: 1, marginTop: 12 }}>
               <SlotGame
-                text={slotButton ? suprise : "xxxx"}
+                text={slotButton ? suprise : "XXXX"}
                 range="ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
                 duration={3000}
                 delay={200}
@@ -249,7 +248,7 @@ const GamePlay = ({ navigation, route }) => {
             </View>
             <View style={{ flex: 1 }}>
               <SlotGame
-                text={slotButton ? supriseTwo : 0}
+                text={slotButton ? supriseTwo : ""}
                 duration={1000}
                 delay={1000}
                 padding={2}
