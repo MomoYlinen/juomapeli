@@ -224,7 +224,7 @@ const GamePlay = ({ navigation, route }) => {
             </View>
           </View>
           <View style={styles.nameSlot}>
-            <View style={{ flex: 1, marginTop: 12 }}>
+            <View style={styles.slotGameName}>
               <SlotGame
                 text={slotButton ? suprise : "XXXX"}
                 range="ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
@@ -236,7 +236,7 @@ const GamePlay = ({ navigation, route }) => {
                 initialAnimation={slotButton}
               />
             </View>
-            <View style={{ flex: 1 }}>
+            <View style={styles.slotGameAction}>
               <SlotGame
                 text={slotButton ? supriseTwo : ""}
                 duration={1000}
@@ -247,7 +247,7 @@ const GamePlay = ({ navigation, route }) => {
                 initialAnimation={slotButton}
               />
             </View>
-            <View style={{ flex: 1, width: "30%", marginBottom: 8 }}>
+            <View style={styles.slotGameSpin}>
               <SpinButton handlerandomClick={spin} />
             </View>
           </View>
@@ -259,7 +259,7 @@ const GamePlay = ({ navigation, route }) => {
 
   if (gameMode === "BaseGame") {
     return (
-      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
+      <View style={styles.baseGameContainer}>
         <Header style={{ flex: 1 }} />
         <View style={{ flex: 7 }}>
           <BaseGame

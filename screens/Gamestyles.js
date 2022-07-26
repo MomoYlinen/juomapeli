@@ -38,4 +38,8 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     marginBottom: 2,
   },
+  slotGameName: { flex: 1, marginTop: 12 },
+  slotGameAction: { flex: 1 },
+  slotGameSpin: { flex: 1, width: "30%", marginBottom: 8 },
+  baseGameContainer: { flex: 1, backgroundColor: "#FCFCFC" },
 });
