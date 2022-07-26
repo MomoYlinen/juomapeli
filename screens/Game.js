@@ -28,6 +28,7 @@ import {
   Nunito_900Black,
   Nunito_900Black_Italic,
 } from "@expo-google-fonts/nunito";
+import { styles } from "./Gamestyles";
 
 const GamePlay = ({ navigation, route }) => {
   let [fontsLoaded] = useFonts({
@@ -204,44 +205,14 @@ const GamePlay = ({ navigation, route }) => {
     const supriseThree = playerList[randomOptionsThree].toUpperCase();
 
     return (
-      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
-        <Header style={{ flex: 1 }} />
-        <View
-          style={{
-            flex: 6,
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 32,
-          }}
-        >
-          <View
-            style={{
-              marginBottom: 24,
-              flex: 2,
-              justifyContent: "flex-end",
-            }}
-          >
-            <View
-              style={{
-                flex: 1,
-                width: "100%",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 50,
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  color: "#6534B9",
-                  fontFamily: "Nunito_900Black",
-                }}
-              >
-                Pyöräytä
-              </Text>
+      <View style={styles.container}>
+        <Header style={styles.header} />
+        <View style={styles.headerTop}>
+          <View style={styles.headerBottom}>
+            <View style={styles.headerBottomTextContainer}>
+              <Text style={styles.headerBottomText}>Pyöräytä</Text>
             </View>
-            <View style={{ flex: 1, justifyContent: "flex-end" }}>
+            <View style={styles.nameSlotContainer}>
               <NameSlot
                 text={supriseThree}
                 range="ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
@@ -252,18 +223,7 @@ const GamePlay = ({ navigation, route }) => {
               />
             </View>
           </View>
-          <View
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              flex: 3,
-              backgroundColor: "#6534B9",
-              width: "75%",
-              borderRadius: 20,
-              borderWidth: 2,
-              marginBottom: 2,
-            }}
-          >
+          <View style={styles.nameSlot}>
             <View style={{ flex: 1, marginTop: 12 }}>
               <SlotGame
                 text={slotButton ? suprise : "XXXX"}
