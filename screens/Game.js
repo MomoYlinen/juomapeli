@@ -260,8 +260,8 @@ const GamePlay = ({ navigation, route }) => {
   if (gameMode === "BaseGame") {
     return (
       <View style={styles.baseGameContainer}>
-        <Header style={{ flex: 1 }} />
-        <View style={{ flex: 7 }}>
+        <Header style={styles.baseGameHeader} />
+        <View style={styles.baseGame}>
           <BaseGame
             selected={selected}
             counter={counter}
@@ -276,14 +276,14 @@ const GamePlay = ({ navigation, route }) => {
 
   if (gameMode === "ColorGame") {
     return (
-      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
-        <Header style={{ flex: 1 }} />
-        <View style={{ flex: 7 }}>
+      <View style={styles.colorGameContainer}>
+        <Header style={styles.colorGameHeader} />
+        <View style={styles.colorGame}>
           <ColorGame
             selected={selected}
             counter={counter}
             playerOne={neededPlayers}
-            style={{ flex: 7 }}
+            style={styles.colorGameText}
           />
         </View>
         <GameButton style={{ flex: 1 }} handlerandomClick={handlerandomClick} />
@@ -293,13 +293,13 @@ const GamePlay = ({ navigation, route }) => {
 
   if (gameMode === "End") {
     return (
-      <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
-        <Header style={{ flex: 1 }} />
-        <View style={{ flex: 7 }}>
+      <View style={styles.endGameContainer}>
+        <Header style={styles.endGameHeader} />
+        <View style={styles.endGame}>
           <GameEnding
             backToHome={backToMainMenu}
             handlerandomClick={handlerandomClick}
-            style={{ flex: 7 }}
+            style={styles.endGameOptions}
           />
         </View>
       </View>
