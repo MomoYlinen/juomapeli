@@ -198,9 +198,10 @@ const GamePlay = ({ navigation, route }) => {
     ];
     const randomOptions = getRandomInt(0, 7);
     const randomOptionsTwo = getRandomInt(0, 15);
+    const randomOptionsThree = getRandomInt(0, playerList.length - 1);
     const suprise = slotOptions[randomOptions];
     const supriseTwo = slotOptionsTwo[randomOptionsTwo];
-    const supriseThree = playerList[turnCounter].toUpperCase();
+    const supriseThree = playerList[randomOptionsThree].toUpperCase();
 
     return (
       <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
