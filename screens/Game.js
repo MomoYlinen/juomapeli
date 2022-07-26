@@ -60,6 +60,8 @@ const GamePlay = ({ navigation, route }) => {
   const [neededPlayers, setNeededPlayers] = useState("");
   const [gameMode, setGameMode] = useState("");
   const [slotButton, setSlotButton] = useState(false);
+  const [playerList, setPlayerList] = useState([]);
+  const [turnCounter, setTurnCounter] = useState(0);
 
   const players = navigation.getParam("gamers");
 
@@ -74,6 +76,8 @@ const GamePlay = ({ navigation, route }) => {
   const handlerandomClick = () => {
     setSlotButton(false);
     console.log(counter);
+    console.log(playerList);
+    console.log(turnCounter, "Laskuri");
     if (counter === 0) {
       let randomize = questionNumber
         .map((value) => ({ value, sort: Math.random() }))
@@ -88,8 +92,20 @@ const GamePlay = ({ navigation, route }) => {
 
       setPlayerOne(randomPlayerlist[0].player);
       setPlayerTwo(randomPlayerlist[1].player);
-    }
+    } else {
+      let randomPlayerlist = players
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
 
+      setPlayerOne(playerList[turnCounter]);
+      setPlayerTwo(playerList[turnCounter - 1]);
+      if (turnCounter === 0) {
+        setPlayerOne(playerList[turnCounter]);
+        setPlayerTwo(playerList[turnCounter + 1]);
+        console.log("Ollaan täällä");
+      }
+    }
     if (counter === 47) {
       setNeededPlayers("");
       setGameMode("End");
@@ -97,14 +113,6 @@ const GamePlay = ({ navigation, route }) => {
       setCounter(0);
       return;
     }
-
-    let randomPlayerlist = players
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
-
-    setPlayerOne(randomPlayerlist[0].player);
-    setPlayerTwo(randomPlayerlist[1].player);
     if (counter === 0) {
       const randomInt = getRandomInt(0, 7);
       const kysymys = Questions[randomInt];
@@ -140,11 +148,26 @@ const GamePlay = ({ navigation, route }) => {
       setGameMode(kysymys.gamemode);
       setSelected(kysymys.question);
       setCounter(counter + 1);
+      setTurnCounter(turnCounter + 1);
+    }
+    if (turnCounter == playerList.length - 1) {
+      setTurnCounter(0);
+      let shufflePlayerlist = playerList
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+      setPlayerList(shufflePlayerlist);
     }
   };
 
   if (startNewGame === true) {
     setStartNewGame(false);
+    const playerNames = players.map((name) => {
+      setPlayerList((prevplayerList) => {
+        return [...prevplayerList, name.player];
+      });
+    });
+    console.log(playerList);
     handlerandomClick();
   }
 
@@ -162,6 +185,12 @@ const GamePlay = ({ navigation, route }) => {
       "JUO",
       "ANNA",
       "JUO",
+      "JAA",
+      "JAA",
+      "JAA",
+      "JAA",
+      "JAA",
+      "JAA",
     ];
 
     const slotOptionsTwo = [
@@ -171,7 +200,7 @@ const GamePlay = ({ navigation, route }) => {
     const randomOptionsTwo = getRandomInt(0, 15);
     const suprise = slotOptions[randomOptions];
     const supriseTwo = slotOptionsTwo[randomOptionsTwo];
-    const supriseThree = playerOne.toUpperCase();
+    const supriseThree = playerList[turnCounter].toUpperCase();
 
     return (
       <View style={{ flex: 1, backgroundColor: "#FCFCFC" }}>
