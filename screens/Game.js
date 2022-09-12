@@ -195,10 +195,10 @@ const GamePlay = ({ navigation, route }) => {
     ];
 
     const slotOptionsTwo = [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20, 13, 3, 2,
+      1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,2,6, 7,7,7, 8, 9, 10, 5, 7,6, 3, 2
     ];
-    const randomOptions = getRandomInt(0, 7);
-    const randomOptionsTwo = getRandomInt(0, 15);
+    const randomOptions = getRandomInt(0, 13);
+    const randomOptionsTwo = getRandomInt(0, 43);
     const randomOptionsThree = getRandomInt(0, playerList.length - 1);
     const suprise = slotOptions[randomOptions];
     const supriseTwo = slotOptionsTwo[randomOptionsTwo];
