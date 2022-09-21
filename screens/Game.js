@@ -137,10 +137,12 @@ const GamePlay = ({ navigation, route }) => {
 
       if (kysymys.playersNeeded === 1) {
         setNeededPlayers(playerOne);
+        setTurnCounter(turnCounter + 1);
       }
 
       if (kysymys.playersNeeded === 2) {
         setNeededPlayers(`${playerOne} ja ${playerTwo}`);
+        setTurnCounter(turnCounter + 1);
       }
 
       if (kysymys.playersNeeded === 0) {
@@ -149,7 +151,6 @@ const GamePlay = ({ navigation, route }) => {
       setGameMode(kysymys.gamemode);
       setSelected(kysymys.question);
       setCounter(counter + 1);
-      setTurnCounter(turnCounter + 1);
     }
     if (turnCounter == playerList.length - 1) {
       setTurnCounter(0);
