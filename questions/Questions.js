@@ -101,7 +101,7 @@ const questions = [
   },
   {
     gamemode: "BaseGame",
-    question: "Vanhin pelaaja juo kaksi huikkaa",
+    question: "Miki juop viisi huikkaa",
     playersNeeded: 0,
   },
   {
@@ -161,12 +161,18 @@ const questions = [
   },
   { gamemode: "BaseGame", question: "Anna kaksi huikkaa", playersNeeded: 1 },
   { gamemode: "BaseGame", question: "Anna kuusi huikkaa", playersNeeded: 1 },
-  { gamemode: "BaseGame", question: "Anna kuusi huikkaa", playersNeeded: 1 },
   { gamemode: "BaseGame", question: "Anna neljä huikkaa", playersNeeded: 1 },
-  { gamemode: "BaseGame", question: "Anna kuusi huikkaa", playersNeeded: 1 },
   { gamemode: "BaseGame", question: "Anna neljä huikkaa", playersNeeded: 1 },
   { gamemode: "BaseGame", question: "Keksi sääntö", playersNeeded: 1 },
   {
+    gamemode: "BaseGame",
+    question: "Pelatkaa kivi-sakset-paperi, häviäjä juo kolme huikkaa",
+    playersNeeded: 2,
+  },  {
+    gamemode: "BaseGame",
+    question: "Pelatkaa kivi-sakset-paperi, häviäjä juo kolme huikkaa",
+    playersNeeded: 2,
+  },  {
     gamemode: "BaseGame",
     question: "Pelatkaa kivi-sakset-paperi, häviäjä juo kolme huikkaa",
     playersNeeded: 2,
